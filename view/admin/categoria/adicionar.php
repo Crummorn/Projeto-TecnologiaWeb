@@ -1,6 +1,6 @@
 <?php 
 include("../database/conecta.php");
-include("../database/categoria-service.php");
+include("../database/categoria-controller.php");
 session_start();
 
 $nome = $_POST["nome"];

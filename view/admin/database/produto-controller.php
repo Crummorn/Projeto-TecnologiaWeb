@@ -1,4 +1,20 @@
 <?php
+require_once ("produto-service.php");
+
+function insereProduto($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
+    $service = new ProdutoService();
+    return $service->adicionar($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
+}
+
+function alteraProduto($conexao, $id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
+    $service = new ProdutoService();
+    return $service->alterar($conexao, $id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
+}
+
+function removeProduto($conexao, $id) {
+    $serviceProduto = new ProdutoService();
+    return $serviceProduto->remover($conexao, $id);
+}
 
 function listaProduto($conexao) {
     $produtos = array();

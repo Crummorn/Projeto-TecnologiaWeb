@@ -1,6 +1,6 @@
 <?php 
 include("../database/conecta.php");
-include("../database/fornecedor-service.php");
+include("../database/fornecedor-controller.php");
 session_start();
 
 $cnpj = $_POST["cnpj"];

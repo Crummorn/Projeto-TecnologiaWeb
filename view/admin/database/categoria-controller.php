@@ -1,4 +1,20 @@
 <?php
+require_once ("categoria-service.php");
+
+function insereCategoria($conexao, $nome) {
+    $service = new CategoriaService();
+    return $service->adicionar($conexao, $nome);
+}
+
+function alteraCategoria($conexao, $id, $nome) {
+    $service = new CategoriaService();
+    return $service->alterar($conexao, $id, $nome);
+}
+
+function removeCategoria($conexao, $id) {
+    $service = new CategoriaService();
+    return $service->remover($conexao, $id);
+}
 
 function listaCategorias($conexao) {
     $categorias = array();
