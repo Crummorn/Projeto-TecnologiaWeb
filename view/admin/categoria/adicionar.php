@@ -1,7 +1,6 @@
 <?php 
 include("../database/conecta.php");
-include("../database/banco-categoria.php");
-include("../fragments/funcoes-basicas.php");
+include("../database/categoria-service.php");
 session_start();
 
 $nome = $_POST["nome"];

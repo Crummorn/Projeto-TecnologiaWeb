@@ -1,7 +1,8 @@
 <?php     
     include ("../database/conecta.php"); 
-    include ("../database/banco-categoria.php"); 
-    include ("../database/banco-fornecedor.php"); 
+    include ("../database/categoria-controller.php"); 
+    include ("../database/fornecedor-controller.php"); 
+    include ("../database/produto-controller.php"); 
 
     $titulo = "Painel Administrativo - Index"; 
     $paginaAtual = "Home";
@@ -32,10 +33,19 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <p>
+                                    <h3>Categorias</h3>
                                     Total de Categorias: <?=totalCategorias($conexao)?>
                                 </p>
                                 <p>
+                                    <h3>Fornecedores</h3>
                                     Total de Fornecedores: <?=totalFornecedores($conexao)?>
+                                </p>
+                                <p>
+                                    <h3>Produtos</h3>
+                                    Total de Produtos: <?=totalProdutos($conexao)?><br>
+                                    Total de Estoque de Produtos: <?=totalEstoqueProdutos($conexao)?><br>
+                                    Lucro possivel de 1: <?=possivelLucroDeUmProdutoEspecifico($conexao, 1)?><br>
+                                    Estoque Fornecedor 4: <?=totalEstoqueProdutosFornecedorEspecifico($conexao, 4)?>
                                 </p>
                             </div>
                         </div>

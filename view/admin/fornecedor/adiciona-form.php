@@ -1,7 +1,4 @@
 <?php 
-    include ("../database/conecta.php"); 
-    include ("../database/banco-fornecedor.php"); 
-
     $titulo = "Painel Administrativo - Fornecedores"; 
     $paginaAtual = "Fornecedor";  
     $header = "Fornecedores";

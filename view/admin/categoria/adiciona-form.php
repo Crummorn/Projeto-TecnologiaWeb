@@ -1,7 +1,4 @@
 <?php 
-    include ("../database/conecta.php"); 
-    include ("../database/banco-categoria.php"); 
-
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";  
     $header = "Categorias";
