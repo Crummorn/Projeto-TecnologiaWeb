@@ -1,6 +1,5 @@
 <?php 
-include("../database/conecta.php");
-include("../database/categoria-controller.php");
+require_once("../database/categoria-controller.php");
 session_start();
 
 $id = $_POST["id"];

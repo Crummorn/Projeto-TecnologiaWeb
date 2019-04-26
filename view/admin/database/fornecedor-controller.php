@@ -1,5 +1,6 @@
 <?php
-include ("fornecedor-service.php");
+require_once ("conecta.php");
+require_once ("fornecedor-service.php");
 
 function insereFornecedor($conexao, $cnpj, $nome, $endereco, $contato) {
     $cnpj = mysqli_real_escape_string($conexao, $cnpj);

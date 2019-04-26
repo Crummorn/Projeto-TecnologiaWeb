@@ -1,4 +1,5 @@
 <?php
+require_once ("conecta.php");
 require_once ("produto-service.php");
 
 function insereProduto($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {

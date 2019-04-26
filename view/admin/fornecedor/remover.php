@@ -1,6 +1,5 @@
 <?php 
-include("../database/conecta.php");
-include("../database/fornecedor-controller.php");
+require_once("../database/fornecedor-controller.php");
 session_start();
 
 $id = $_POST['id'];

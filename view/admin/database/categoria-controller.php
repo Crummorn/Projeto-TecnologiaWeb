@@ -1,4 +1,5 @@
 <?php
+require_once ("conecta.php");
 require_once ("categoria-service.php");
 
 function insereCategoria($conexao, $nome) {

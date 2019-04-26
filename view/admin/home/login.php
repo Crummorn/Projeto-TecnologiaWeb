@@ -1,6 +1,6 @@
 <?php $title = "Login Administrativo" ?>
 
-<?php include ("../fragments/head.php"); ?>
+<?php require_once ("../fragments/head.php"); ?>
     
 <!-- Content -->
 <section class="cover">
@@ -27,4 +27,4 @@
     </div>
 </section>
 
-<?php include '../fragments/footer.php' ?>
+<?php require_once '../fragments/footer.php' ?>

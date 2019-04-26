@@ -1,6 +1,5 @@
 <?php 
-    include ("../database/conecta.php"); 
-    include ("../database/fornecedor-controller.php"); 
+    require_once ("../database/fornecedor-controller.php"); 
 
     $titulo = "Painel Administrativo - Fornecedores"; 
     $paginaAtual = "Fornecedor";    
@@ -8,10 +7,10 @@
 
     $fornecedor = buscaFornecedor($conexao, $_GET['id']);
 
-    include ("../fragments/funcoes-basicas.php"); 
-    include ("../fragments/head.php");  
-    include ("../fragments/navbar.php");  
-    include ("../fragments/sidebar.php"); 
+    require_once ("../fragments/funcoes-basicas.php"); 
+    require_once ("../fragments/head.php");  
+    require_once ("../fragments/navbar.php");  
+    require_once ("../fragments/sidebar.php"); 
     session_start();
 ?>
 

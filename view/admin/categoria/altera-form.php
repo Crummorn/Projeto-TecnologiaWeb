@@ -1,6 +1,5 @@
 <?php 
-    include ("../database/conecta.php"); 
-    include ("../database/categoria-controller.php"); 
+    require_once ("../database/categoria-controller.php"); 
 
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";    
@@ -8,10 +7,10 @@
 
     $categoria = buscaCategoria($conexao, $_GET['id']);
 
-    include ("../fragments/funcoes-basicas.php"); 
-    include ("../fragments/head.php");  
-    include ("../fragments/navbar.php");  
-    include ("../fragments/sidebar.php"); 
+    require_once ("../fragments/funcoes-basicas.php"); 
+    require_once ("../fragments/head.php");  
+    require_once ("../fragments/navbar.php");  
+    require_once ("../fragments/sidebar.php"); 
     session_start();
 ?>
 
@@ -63,4 +62,4 @@
 
 <!-- Fim do d-flex SideBar -->
 </div>
-<?php include '../fragments/footer.php' ?>
+<?php require_once '../fragments/footer.php' ?>
