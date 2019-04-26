@@ -19,7 +19,7 @@
 <div class="form-group">
     <label class="control-label" for="estoque">Estoque *</label>
     <input type="text" class="form-control" name="estoque" 
-        placeholder="Informe o Estoque" value="<?= $produto['estoque'] ?>">
+        placeholder="Informe o Estoque" value="<?= $produto['estoque'] ?>" <?= campoVazio($produto['estoque'])?>>
 </div>
 
 <div class="form-group">

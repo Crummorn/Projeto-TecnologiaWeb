@@ -86,7 +86,7 @@
                                                 </td>
                                                     
                                                 <td class="text-center form-inline">
-                                                    <button type="button" class="btn btn-primary btn-xs mr-2" data-toggle="modal" data-target="#myModal<?=$produto['id']?>">
+                                                    <button type="button" class="btn btn-warning btn-xs mr-2" data-toggle="modal" data-target="#myModal<?=$produto['id']?>">
                                                         <i class="fas fa-info-circle"></i>
                                                             <span class="d-none d-md-inline d-lg-inline">
                                                                 Info
@@ -99,7 +99,7 @@
                                                             Alterar
                                                         </span>
                                                     </a>
-                                                    <form action="remover.php" method="post">
+                                                    <form action="controller/remover.php" method="post">
                                                         <input type="hidden" name="id" value="<?=$produto['id']?>" />
                                                         <button class="btn btn-danger btn-xs">
                                                             <i class="fas fa-trash"></i>

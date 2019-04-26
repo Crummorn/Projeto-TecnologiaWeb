@@ -6,3 +6,11 @@ function linkSidebarAtivo($paginaAtual, $link) {
         echo 'active';
     }
 }
+
+function campoVazio($campo) {
+    if ($campo === "") {
+        echo '';
+    } else {
+        echo 'readonly';
+    }
+}

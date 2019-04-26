@@ -71,3 +71,21 @@ function totalEstoqueProdutosFornecedorEspecifico($conexao, $fornecedor_id) {
     $row = mysqli_fetch_object($resultado);
     return $row->total_estoque;
 }
+
+function adicionarEstoque($conexao, $id, $quantidade) {
+    $produto = buscaProduto($conexao, $id);
+    return alteraProduto($conexao, $id, $produto['nome'], $produto['valor'], $produto['descricao'], $produto['peso'], ($produto['estoque'] + $quantidade), $produto['custo'], $produto['categoria_id'], $produto['fornecedor_id']);
+}
+
+function darBaixaNoEstoque($conexao, $id, $quantidade) {
+    $produto = buscaProduto($conexao, $id);
+    if ($produto['estoque'] > $quantidade) {
+        return alteraProduto($conexao, $id, $produto['nome'], $produto['valor'], $produto['descricao'], $produto['peso'], ($produto['estoque'] - $quantidade), $produto['custo'], $produto['categoria_id'], $produto['fornecedor_id']);
+    } else {
+        $produto = buscaProduto($conexao, $id);     
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Produto ' . $produto['nome'] . ' não tem estoque suficiente!';
+        header("Location: ../listagem.php");    
+        die();
+    }
+}

@@ -80,7 +80,46 @@
                     <span class="col-md-8">
                         <?=$produto['fornecedor_nome']?>
                     </span>
+                </div> 
+
+                <hr>
+
+                <div class="row">
+                    <form action="controller/estoqueAumenta.php" method="POST">
+                        <label class="control-label col-md-12" for="quantidade">Aumentar Estoque</label>
+                        <input type="hidden" name="id" value="<?=$produto['id']?>" />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <label class="control-label col-md-4" for="quantidade">Quantidade</label>
+                                <input type="text" class="form-control col-md-4" style="display: inline" name="quantidade" autofocus="autofocus" 
+                                    placeholder="Quantidade">
+                                <button type="submit" class="btn btn-primary btn-xs float-right">
+                                    <i class="fa fa-save"></i> <span>Adicionar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+
+                <div class="row">
+                    <form action="controller/estoqueBaixa.php" method="POST">
+                        <label class="control-label col-md-12" for="quantidade">Dar Baixa No Estoque</label>
+                        <input type="hidden" name="id" value="<?=$produto['id']?>" />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <label class="control-label col-md-4" for="quantidade">Quantidade</label>
+                                <input type="text" class="form-control col-md-4" style="display: inline" name="quantidade" autofocus="autofocus" 
+                                    placeholder="Quantidade">
+                                <button type="submit" class="btn btn-primary btn-xs float-right">
+                                    <i class="fa fa-save"></i> <span>Baixar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
