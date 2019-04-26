@@ -19,6 +19,11 @@
                 <?php linkSidebarAtivo($paginaAtual, 'Fornecedor') ?>">
                 Fornecedor
             </a>
+            <a href="../produto/listagem.php" 
+                class="list-group-item list-group-item-action bg-light
+                <?php linkSidebarAtivo($paginaAtual, 'Produto') ?>">
+                Produtos
+            </a>
             <a href="../home/login.php" class="list-group-item list-group-item-action bg-light">Login</a>
         </div>
     </div>

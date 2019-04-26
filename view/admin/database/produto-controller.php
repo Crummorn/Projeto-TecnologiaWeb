@@ -21,24 +21,22 @@ function removeProduto($conexao, $id) {
     return $serviceProduto->remover($conexao, $id);
 }
 
-function listaProduto($conexao) {
+function listaProdutos($conexao) {
     $produtos = array();
     $query = "SELECT produto.*, c.nome AS categoria_nome, f.nome AS fornecedor_nome   
                 FROM produto 
                 LEFT JOIN categoria AS c ON c.id=produto.categoria_id
                 LEFT JOIN fornecedor AS f ON f.id=produto.fornecedor_id";
     $resultado = mysqli_query($conexao, $query);
-    while($categoria = mysqli_fetch_assoc($resultado)) {
-        array_push($categorias, $categoria);
+    while($produto = mysqli_fetch_assoc($resultado)) {
+        array_push($produtos, $produto);
     }
-    return $categorias;
+    return $produtos;
 }
 
 function buscaProduto($conexao, $id) {
-    $query = "SELECT p.*, c.nome AS categoria_nome, f.nome AS fornecedor_nome   
+    $query = "SELECT p.*   
                 FROM produto AS p
-                LEFT JOIN categoria AS c ON c.id = p.categoria_id
-                LEFT JOIN fornecedor AS f ON f.id = p.fornecedor_id 
                 WHERE id = {$id}";
     $resultado = mysqli_query($conexao, $query);
     return mysqli_fetch_assoc($resultado);

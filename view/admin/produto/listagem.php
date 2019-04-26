@@ -1,16 +1,16 @@
 <?php 
-    require_once ("../database/fornecedor-controller.php"); 
+    require_once ("../database/produto-controller.php"); 
 
-    $titulo = "Painel Administrativo - Fornecedores"; 
-    $paginaAtual = "Fornecedor";    
-    $header = "Fornecedores";
+    $titulo = "Painel Administrativo - Produtos"; 
+    $paginaAtual = "Produto";    
+    $header = "Produtos";
     
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
     
-    $fornecedores = listaFornecedores($conexao);
+    $produtos = listaProdutos($conexao);
     session_start();
 ?>
 
@@ -57,44 +57,50 @@
                                                 Codigo
                                             </th>
                                             <th class="col-md-3 text-center">
-                                                CNPJ
-                                            </th>
-                                            <th class="col-md-4 text-center">
                                                 Nome
+                                            </th>
+                                            <th class="col-md-2 text-center">
+                                                Estoque
+                                            </th>
+                                            <th class="col-md-2 text-center">
+                                                Categoria
                                             </th>
                                             <th class="col-md-3 text-center">Ações</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach($fornecedores as $fornecedor) : ?>
+                                        <?php foreach($produtos as $produto) : ?>
                                             <tr>
                                                 <td scope="row" class="text-center">
-                                                    <?= $fornecedor['id'] ?>
+                                                    <?= $produto['id'] ?>
                                                 </td>
                                                 <td class="text-center">
-                                                    <?= $fornecedor['cnpj'] ?>
+                                                    <?= $produto['nome'] ?>
                                                 </td>
                                                 <td class="text-center">
-                                                    <?= $fornecedor['nome'] ?>
+                                                    <?= $produto['estoque'] ?>
                                                 </td>
-
+                                                <td class="text-center">
+                                                    <?= $produto['categoria_nome'] ?>
+                                                </td>
+                                                    
                                                 <td class="text-center form-inline">
-                                                    <button type="button" class="btn btn-primary btn-xs mr-2" data-toggle="modal" data-target="#myModal<?=$fornecedor['id']?>">
+                                                    <button type="button" class="btn btn-primary btn-xs mr-2" data-toggle="modal" data-target="#myModal<?=$produto['id']?>">
                                                         <i class="fas fa-info-circle"></i>
                                                             <span class="d-none d-md-inline d-lg-inline">
                                                                 Info
                                                             </span>
                                                     </button>
                                                     <a class="btn btn-primary btn-xs mr-2"
-                                                        href="altera-form.php?id=<?=$fornecedor['id']?>">
+                                                        href="altera-form.php?id=<?=$produto['id']?>">
                                                         <i class="fas fa-pencil-alt"></i>
                                                         <span class="d-none d-md-inline d-lg-inline">
                                                             Alterar
                                                         </span>
                                                     </a>
                                                     <form action="remover.php" method="post">
-                                                        <input type="hidden" name="id" value="<?=$fornecedor['id']?>" />
+                                                        <input type="hidden" name="id" value="<?=$produto['id']?>" />
                                                         <button class="btn btn-danger btn-xs">
                                                             <i class="fas fa-trash"></i>
                                                             <span class="d-none d-md-inline d-lg-inline">
@@ -108,9 +114,9 @@
                                             <?php include ("fragments/modal-info.php"); ?>                                        
                                         <?php endforeach ?>
 
-                                        <?php if (empty($fornecedores)) : ?>
+                                        <?php if (empty($produtos)) : ?>
                                             <tr>
-                                                <td colspan="7" class="text-center">Nenhum fornecedor encontrado</td>
+                                                <td colspan="7" class="text-center">Nenhum produto encontrado</td>
                                             </tr>
                                         <?php endif ?>
                                     </tbody>
@@ -127,4 +133,4 @@
 
 <!-- Fim do d-flex SideBar -->
 </div>
-<?php require_once '../fragments/footer.php' ?>
+<?php include '../fragments/footer.php' ?>
