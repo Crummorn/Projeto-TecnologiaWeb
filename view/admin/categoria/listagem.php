@@ -53,13 +53,13 @@
                                 <table class="table table-bordered table-hover mt-2">
                                     <thead>
                                         <tr>
-                                            <th class="col-md-1 text-center">
+                                            <th class="col-md-3 text-center">
                                                 Codigo 
                                             </th>
-                                            <th class="col-md-9 text-center">
+                                            <th class="col-md-6 text-center">
                                                 Nome 
                                             </th>
-                                            <th class="col-md-2 text-center">Ações</th>
+                                            <th class="col-md-3 text-center">Ações</th>
                                         </tr>
                                     </thead>
 

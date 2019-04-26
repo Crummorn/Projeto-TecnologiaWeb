@@ -36,7 +36,7 @@
                                 <form action="alterar.php" method="POST">
                                     <input type="hidden" name="id" value="<?=$fornecedor['id']?>" />
                                     
-                                    <?php include("form-base.php") ?>
+                                    <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-save"></i> <span>Salvar</span>

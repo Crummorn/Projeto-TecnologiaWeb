@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <form action="adicionar.php" method="POST">
-                                    <?php include("form-base.php") ?>
+                                    <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-save"></i> <span>Salvar</span>
