@@ -2,11 +2,13 @@
 require_once ("categoria-service.php");
 
 function insereCategoria($conexao, $nome) {
+    $nome = mysqli_real_escape_string($conexao, $nome);
     $service = new CategoriaService();
     return $service->adicionar($conexao, $nome);
 }
 
 function alteraCategoria($conexao, $id, $nome) {
+    $nome = mysqli_real_escape_string($conexao, $nome);
     $service = new CategoriaService();
     return $service->alterar($conexao, $id, $nome);
 }

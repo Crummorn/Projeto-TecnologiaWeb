@@ -2,11 +2,15 @@
 require_once ("produto-service.php");
 
 function insereProduto($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
+    $nome = mysqli_real_escape_string($conexao, $nome);
+    $descricao = mysqli_real_escape_string($conexao, $descricao);
     $service = new ProdutoService();
     return $service->adicionar($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
 }
 
 function alteraProduto($conexao, $id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
+    $nome = mysqli_real_escape_string($conexao, $nome);
+    $descricao = mysqli_real_escape_string($conexao, $descricao);
     $service = new ProdutoService();
     return $service->alterar($conexao, $id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
 }

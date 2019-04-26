@@ -2,11 +2,19 @@
 include ("fornecedor-service.php");
 
 function insereFornecedor($conexao, $cnpj, $nome, $endereco, $contato) {
+    $cnpj = mysqli_real_escape_string($conexao, $cnpj);
+    $nome = mysqli_real_escape_string($conexao, $nome);
+    $endereco = mysqli_real_escape_string($conexao, $endereco);
+    $contato = mysqli_real_escape_string($conexao, $contato);
     $service = new FornecedorService();
     return $service->adicionar($conexao, $cnpj, $nome, $endereco, $contato);
 }
 
 function alteraFornecedor($conexao, $id, $cnpj, $nome, $endereco, $contato) {
+    $cnpj = mysqli_real_escape_string($conexao, $cnpj);
+    $nome = mysqli_real_escape_string($conexao, $nome);
+    $endereco = mysqli_real_escape_string($conexao, $endereco);
+    $contato = mysqli_real_escape_string($conexao, $contato);
     $service = new FornecedorService();
     return $service->alterar($conexao, $id, $cnpj, $nome, $endereco, $contato);
 }
