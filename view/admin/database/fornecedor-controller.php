@@ -22,7 +22,22 @@ function alteraFornecedor($conexao, $id, $cnpj, $nome, $endereco, $contato) {
 
 function removeFornecedor($conexao, $id) {
     $service = new FornecedorService();
-    return $service->remover($conexao, $id);
+
+    if (testaFornecedorNaoEstaSendoUsada($conexao, $id)) {
+        return $service->remover($conexao, $id);
+    } else {   
+        $fornecedor = buscaFornecedor($conexao, $id);     
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Fornecedor ' . $fornecedor['nome'] . ' não pode ser removido, está sendo utilizada!';
+        header("Location: listagem.php");    
+        die();
+    }
+}
+
+function testaFornecedorNaoEstaSendoUsada($conexao, $id) {
+    $query = "SELECT * FROM produto WHERE produto.fornecedor_id = {$id}";
+    $resultado = mysqli_query($conexao, $query);
+    return $resultado->num_rows === 0 ? true : false;
 }
 
 function listaFornecedores($conexao) {

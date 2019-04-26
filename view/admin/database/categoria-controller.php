@@ -16,7 +16,22 @@ function alteraCategoria($conexao, $id, $nome) {
 
 function removeCategoria($conexao, $id) {
     $service = new CategoriaService();
-    return $service->remover($conexao, $id);
+
+    if (testaCategoriaNaoEstaSendoUsada($conexao, $id)) {
+        return $service->remover($conexao, $id);
+    } else {   
+        $categoria = buscaCategoria($conexao, $id);     
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Categoria ' . $categoria['nome'] . ' não pode ser removida, está sendo utilizada!';
+        header("Location: listagem.php");    
+        die();
+    }
+}
+
+function testaCategoriaNaoEstaSendoUsada($conexao, $id) {
+    $query = "SELECT * FROM produto WHERE produto.categoria_id = {$id}";
+    $resultado = mysqli_query($conexao, $query);
+    return $resultado->num_rows === 0 ? true : false;
 }
 
 function listaCategorias($conexao) {
