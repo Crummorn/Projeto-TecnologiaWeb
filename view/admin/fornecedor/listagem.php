@@ -97,18 +97,18 @@
                                                 </td>  
 
                                                 <td class="text-center form-inline">
-                                                    <a class="btn btn-primary btn-sm mr-2" href="altera-form.php?id=<?=$fornecedor['id']?>">
-                                                        <i class="fas fa-pencil-alt"></i>    
+                                                    <a class="btn btn-primary btn-xs mr-2" href="altera-form.php?id=<?=$fornecedor['id']?>">
+                                                        <i class="fas fa-pencil-alt"></i> 
                                                         <span class="d-none d-md-inline d-lg-inline">
-                                                            Alterar 
+                                                            Alter 
                                                         </span>
                                                     </a>
                                                     <form action="remover.php" method="post">
                                                         <input type="hidden" name="id" value="<?=$fornecedor['id']?>" />
-                                                        <button class="btn btn-danger btn-sm js-delete-button">
+                                                        <button class="btn btn-danger btn-xs js-delete-button">
                                                             <i class="fas fa-trash"></i> 
                                                             <span class="d-none d-md-inline d-lg-inline">
-                                                                Deletar
+                                                                Delete
                                                             </span>
                                                         </button>
                                                     </form>

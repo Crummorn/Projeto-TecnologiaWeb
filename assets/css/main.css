@@ -22,3 +22,10 @@ html, body {
 	background-color: #007bff !important;
 	border-color: #007bff;
 }
+
+.btn-group-xs > .btn, .btn.btn-xs {
+    padding: .5rem .4rem;
+    font-size: .8rem;
+    line-height: .5;
+    border-radius: .2rem;
+}
