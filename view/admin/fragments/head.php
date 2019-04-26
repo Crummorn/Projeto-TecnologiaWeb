@@ -13,6 +13,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css" />
     <!-- SideBar CSS -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/css/all.min.css" />
+    <!-- SideBar CSS -->
     <link rel="stylesheet" href="../../../assets/css/simple-sidebar.css" />
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../../assets/css/main.css" />

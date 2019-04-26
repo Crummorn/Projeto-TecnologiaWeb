@@ -12,6 +12,8 @@
     <script src="../../../assets/js/jquery-3.3.1.min.js"> </script>
     <script src="../../../assets/js/popper.min.js"> </script>
     <script src="../../../assets/bootstrap/js/bootstrap.min.js"> </script>
+    <!-- FontAwesome JS -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/js/all.min.js" />
 </body>
 
 </html>
