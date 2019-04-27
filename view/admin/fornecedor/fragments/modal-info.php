@@ -57,6 +57,24 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
+                <div class="form-inline mr-auto">
+                    <a class="btn btn-primary mr-2"
+                        href="altera-form.php?id=<?=$fornecedor['id']?>">
+                        <i class="fas fa-pencil-alt"></i>
+                        <span class="d-none d-md-inline d-lg-inline">
+                            Alterar
+                        </span>
+                    </a>
+                    <form action="controller/remover.php" method="post">
+                        <input type="hidden" name="id" value="<?=$fornecedor['id']?>" />
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                            <span class="d-none d-md-inline d-lg-inline">
+                                Deletar
+                            </span>
+                        </button>
+                    </form>
+                </div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>

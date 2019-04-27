@@ -86,7 +86,7 @@
                                                 </td>
                                                     
                                                 <td class="text-center form-inline">
-                                                    <button type="button" class="btn btn-warning btn-xs mr-2" data-toggle="modal" data-target="#myModal<?=$produto['id']?>">
+                                                    <button type="button" class="btn btn-secondary btn-xs mr-2" data-toggle="modal" data-target="#myModal<?=$produto['id']?>">
                                                         <i class="fas fa-info-circle"></i>
                                                             <span class="d-none d-md-inline d-lg-inline">
                                                                 Info

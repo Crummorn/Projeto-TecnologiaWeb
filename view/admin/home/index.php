@@ -39,7 +39,7 @@
                                     <h3>Fornecedores</h3>
                                     Total de Fornecedores: <?=totalFornecedores($conexao)?>
                                 </p>
-                                <p>
+                                <p> 
                                     <h3>Produtos</h3>
                                     Total de Produtos: <?=totalProdutos($conexao)?><br>
                                     Total de Estoque de Produtos: <?=totalEstoqueProdutos($conexao)?><br>

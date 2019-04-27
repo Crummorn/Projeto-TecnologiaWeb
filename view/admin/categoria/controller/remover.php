@@ -1,5 +1,5 @@
 <?php 
-require_once("../database/categoria-controller.php");
+require_once("../../database/categoria-controller.php");
 
 session_start();
 
@@ -9,13 +9,13 @@ $categoria = buscaCategoria($conexao, $id);
 if(removeCategoria($conexao, $id)) {
     $_SESSION['alertType'] = 'success';
     $_SESSION['alertMsg'] = 'Categoria ' . $categoria['nome'] .  ' removida com sucesso!';
-    header("Location: listagem.php");    
+    header("Location: ../listagem.php");    
     die();
 } else {
     $msg = mysqli_error($conexao);
     $_SESSION['alertType'] = 'danger';
     $_SESSION['alertMsg'] = 'Categoria ' . $categoria['nome'] . ' não pode ser removida: ' . $msg ;
-    header("Location: listagem.php");    
+    header("Location: ../listagem.php");    
     die();
 }
 

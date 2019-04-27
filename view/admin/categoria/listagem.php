@@ -81,7 +81,7 @@
                                                             Alterar 
                                                         </span>
                                                     </a>
-                                                    <form action="remover.php" method="post">
+                                                    <form action="controller/remover.php" method="post">
                                                         <input type="hidden" name="id" value="<?=$categoria['id']?>" />
                                                         <button class="btn btn-danger btn-xs js-delete-button">
                                                             <i class="fas fa-trash"></i> 

@@ -33,7 +33,7 @@
 
                         <div class="card-body">
                             <div class="container-fluid">
-                                <form action="alterar.php" method="POST">
+                                <form action="controller/alterar.php" method="POST">
                                     <input type="hidden" name="id" value="<?=$categoria['id']?>" />
                                     
                                     <?php include("fragments/form-base.php") ?>

@@ -31,7 +31,7 @@
 
                         <div class="card-body">
                             <div class="container-fluid">
-                                <form action="adicionar.php" method="POST">
+                                <form action="controller/adicionar.php" method="POST">
                                     <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">
