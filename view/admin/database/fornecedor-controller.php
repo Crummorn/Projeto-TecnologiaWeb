@@ -29,7 +29,7 @@ function removeFornecedor($conexao, $id) {
         $fornecedor = buscaFornecedor($conexao, $id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Fornecedor ' . $fornecedor['nome'] . ' não pode ser removido, está sendo utilizada!';
-        header("Location: listagem.php");    
+        header("Location: ../listagem.php");    
         die();
     }
 }

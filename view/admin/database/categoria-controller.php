@@ -23,7 +23,7 @@ function removeCategoria($conexao, $id) {
         $categoria = buscaCategoria($conexao, $id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Categoria ' . $categoria['nome'] . ' não pode ser removida, está sendo utilizada!';
-        header("Location: listagem.php");    
+        header("Location: ../listagem.php");    
         die();
     }
 }
