@@ -2,6 +2,7 @@
     require_once ("../database/categoria-controller.php"); 
     require_once ("../database/fornecedor-controller.php"); 
     require_once ("../database/produto-controller.php"); 
+    require_once ("../database/status-controller.php"); 
 
     $titulo = "Painel Administrativo - Index"; 
     $paginaAtual = "Home";
@@ -45,6 +46,10 @@
                                     Total de Estoque de Produtos: <?=totalEstoqueProdutos($conexao)?><br>
                                     Lucro possivel de 1: <?=possivelLucroDeUmProdutoEspecifico($conexao, 1)?><br>
                                     Estoque Fornecedor 4: <?=totalEstoqueProdutosFornecedorEspecifico($conexao, 4)?>
+                                </p>
+                                <p> 
+                                    <h3>Status Pedido</h3>
+                                    Total de Status_Pedido: <?=totalStatuss($conexao)?><br>
                                 </p>
                             </div>
                         </div>
