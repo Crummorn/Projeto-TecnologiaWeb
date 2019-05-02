@@ -2,6 +2,8 @@
 require_once ("conecta.php");
 require_once ("fornecedor-service.php");
 
+$fornecedorService = new FornecedorService();
+
 function insereFornecedor($conexao, $cnpj, $nome, $endereco, $contato) {
     $cnpj = mysqli_real_escape_string($conexao, $cnpj);
     $nome = mysqli_real_escape_string($conexao, $nome);
@@ -16,8 +18,7 @@ function insereFornecedor($conexao, $cnpj, $nome, $endereco, $contato) {
         die(); 
     }
 
-    $service = new FornecedorService();
-    return $service->adicionar($conexao, $cnpj, $nome, $endereco, $contato);
+    return $GLOBALS['fornecedorService']->adicionar($conexao, $cnpj, $nome, $endereco, $contato);
 }
 
 function alteraFornecedor($conexao, $id, $cnpj, $nome, $endereco, $contato) {
@@ -34,15 +35,12 @@ function alteraFornecedor($conexao, $id, $cnpj, $nome, $endereco, $contato) {
         die(); 
     }
 
-    $service = new FornecedorService();
-    return $service->alterar($conexao, $id, $cnpj, $nome, $endereco, $contato);
+    return $GLOBALS['fornecedorService']->alterar($conexao, $id, $cnpj, $nome, $endereco, $contato);
 }
 
 function removeFornecedor($conexao, $id) {
-    $service = new FornecedorService();
-
     if (testaFornecedorNaoEstaSendoUsada($conexao, $id)) {
-        return $service->remover($conexao, $id);
+        return $GLOBALS['fornecedorService']->remover($conexao, $id);
     } else {   
         $fornecedor = buscaFornecedor($conexao, $id);     
         $_SESSION['alertType'] = 'danger';
@@ -50,6 +48,26 @@ function removeFornecedor($conexao, $id) {
         header("Location: ../listagem.php");    
         die();
     }
+}
+
+function listaFornecedores($conexao) {
+    return $GLOBALS['fornecedorService']->listaFornecedores($conexao);
+}
+
+function buscaFornecedor($conexao, $id) {
+    return $GLOBALS['fornecedorService']->buscaFornecedor($conexao, $id);
+}
+
+function totalFornecedores($conexao) {
+    return $GLOBALS['fornecedorService']->totalFornecedores($conexao);
+}
+
+/*
+ * Funções de Utilidade
+ */
+
+function testaFornecedorNaoEstaSendoUsada($conexao, $id) {
+    return $GLOBALS['fornecedorService']->testaFornecedorNaoEstaSendoUsada($conexao, $id);
 }
 
 function validaFornecedor($cnpj, $nome, $endereco, $contato) {
@@ -82,31 +100,4 @@ function adicionaFornecedorSession($cnpj, $nome, $endereco, $contato, $listaErro
     $_SESSION['contato'] = $contato;
     $_SESSION['listaErros'] = $listaErros;
     $_SESSION['alertType'] = 'danger';
-}
-
-function testaFornecedorNaoEstaSendoUsada($conexao, $id) {
-    $query = "SELECT * FROM produto WHERE produto.fornecedor_id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado->num_rows === 0 ? true : false;
-}
-
-function listaFornecedores($conexao) {
-    $fornecedores = array();
-    $resultado = mysqli_query($conexao, "SELECT * FROM fornecedor");
-    while($fornecedor = mysqli_fetch_assoc($resultado)) {
-        array_push($fornecedores, $fornecedor);
-    }
-    return $fornecedores;
-}
-
-function buscaFornecedor($conexao, $id) {
-    $query = "SELECT * FROM fornecedor WHERE id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
-    return mysqli_fetch_assoc($resultado);
-}
-
-function totalFornecedores($conexao) {
-    $query = "SELECT * from fornecedor";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado->num_rows;
 }
