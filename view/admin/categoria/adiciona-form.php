@@ -5,11 +5,13 @@
     $paginaAtual = "Categoria";  
     $header = "Categorias";
 
+    $categoria = array();
+
     if (isset($_SESSION['nome'])) { 
-        $categoria = array('nome' => $_SESSION['nome']);
+        $categoria['nome'] = $_SESSION['nome'];
         unset($_SESSION['nome']);
     } else {
-        $categoria = array('nome' => '');
+        $categoria['nome'] = '';
     }
 
     require_once ("../fragments/funcoes-basicas.php"); 

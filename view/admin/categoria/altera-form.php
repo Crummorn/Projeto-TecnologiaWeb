@@ -7,12 +7,12 @@
     $paginaAtual = "Categoria";    
     $header = "Categorias";
 
+    $categoria = buscaCategoria($conexao, $_GET['id']);
+
     if (isset($_SESSION['nome'])) { 
-        $categoria = array('id' => $_GET['id'], 'nome' => $_SESSION['nome']);
+        $categoria['nome'] = $_SESSION['nome'];
         unset($_SESSION['nome']);
-    } else {
-        $categoria = buscaCategoria($conexao, $_GET['id']);
-    }
+    } 
 
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
