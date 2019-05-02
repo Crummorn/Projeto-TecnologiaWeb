@@ -1,17 +1,23 @@
 <?php 
+    session_start();
+    
     require_once ("../database/categoria-controller.php"); 
 
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";    
     $header = "Categorias";
 
-    $categoria = buscaCategoria($conexao, $_GET['id']);
+    if (isset($_SESSION['nome'])) { 
+        $categoria = array('id' => $_GET['id'], 'nome' => $_SESSION['nome']);
+        unset($_SESSION['nome']);
+    } else {
+        $categoria = buscaCategoria($conexao, $_GET['id']);
+    }
 
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
-    session_start();
 ?>
 
 <!-- Content -->
@@ -34,6 +40,8 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <form action="controller/alterar.php" method="POST">
+                                    <?php include("../fragments/alertas-genericos.php") ?>
+                                    
                                     <input type="hidden" name="id" value="<?=$categoria['id']?>" />
                                     
                                     <?php include("fragments/form-base.php") ?>

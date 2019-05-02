@@ -1,15 +1,21 @@
 <?php 
+    session_start();
+    
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";  
     $header = "Categorias";
 
-    $categoria = array("nome" => "");
+    if (isset($_SESSION['nome'])) { 
+        $categoria = array('nome' => $_SESSION['nome']);
+        unset($_SESSION['nome']);
+    } else {
+        $categoria = array('nome' => '');
+    }
 
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
-    session_start();
 ?>
 
 <!-- Content -->
@@ -22,7 +28,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 mt-3">
                     <!-- Header -->
                     <div class="row pb-2 mb-2 border-bottom">
-                            <h1>Cadastro de <?=$header?></h1>
+                            <h1>Cadastro de <?=$header?></h1> 
                         </div>
                     </div>
 
@@ -32,6 +38,7 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <form action="controller/adicionar.php" method="POST">
+                                    <?php include("../fragments/alertas-genericos.php") ?>
                                     <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">
