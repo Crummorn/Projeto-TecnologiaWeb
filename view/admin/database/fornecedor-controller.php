@@ -65,11 +65,11 @@ function validaFornecedor($cnpj, $nome, $endereco, $contato) {
     }
 
     if ((mb_strlen($endereco) < 10) OR (mb_strlen($endereco) > 255)) {
-        array_push($listaErros, 'Campo Nome precisa ter no min 10 carcteres e no max 255 caracteres!');
+        array_push($listaErros, 'Campo Endereco precisa ter no min 10 carcteres e no max 255 caracteres!');
     }
 
     if ((mb_strlen($contato) < 3) OR (mb_strlen($contato) > 50)) {
-        array_push($listaErros, 'Campo Nome precisa ter no min 3 carcteres e no max 50 caracteres!');
+        array_push($listaErros, 'Campo Contato precisa ter no min 3 carcteres e no max 50 caracteres!');
     }
 
     return $listaErros;
