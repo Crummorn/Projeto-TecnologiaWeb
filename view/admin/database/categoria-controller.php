@@ -8,9 +8,7 @@ function insereCategoria($conexao, $nome) {
     $listaErros = validaCategoria($nome);
 
     if (count($listaErros) > 0) {
-        $_SESSION['nome'] = $nome;
-        $_SESSION['alertType'] = 'danger';
-        $_SESSION['listaErros'] = $listaErros;
+        adicionaCategoriaSession($nome, $listaErros);
         header("Location: ../adiciona-form.php");    
         die(); 
     }
@@ -25,9 +23,7 @@ function alteraCategoria($conexao, $id, $nome) {
     $listaErros = validaCategoria($nome);
 
     if (count($listaErros) > 0) {
-        $_SESSION['nome'] = $nome;
-        $_SESSION['alertType'] = 'danger';
-        $_SESSION['listaErros'] = $listaErros;
+        adicionaCategoriaSession($nome, $listaErros);
         header("Location: ../altera-form.php?id=".$id);  
         die(); 
     }
@@ -44,6 +40,12 @@ function validaCategoria($nome) {
     }
 
     return $listaErros;
+}
+
+function adicionaCategoriaSession($nome, $listaErros) {
+    $_SESSION['nome'] = $nome;
+    $_SESSION['listaErros'] = $listaErros;
+    $_SESSION['alertType'] = 'danger';
 }
 
 function removeCategoria($conexao, $id) {

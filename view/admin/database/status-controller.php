@@ -9,7 +9,7 @@ function insereStatus($conexao, $nome, $descricao) {
     $listaErros = validaStatus($nome, $descricao);
 
     if (count($listaErros) > 0) {        
-        adicionaValoresASession($nome, $descricao, $listaErros);
+        adicionaStatusSession($nome, $descricao, $listaErros);
         header("Location: ../adiciona-form.php");  
         die(); 
     }
@@ -25,7 +25,7 @@ function alteraStatus($conexao, $id, $nome, $descricao) {
     $listaErros = validaStatus($nome, $descricao);
 
     if (count($listaErros) > 0) {        
-        adicionaValoresASession($nome, $descricao, $listaErros);
+        adicionaStatusSession($nome, $descricao, $listaErros);
         header("Location: ../altera-form.php?id=".$id);
         die(); 
     }
@@ -48,7 +48,7 @@ function validaStatus($nome, $descricao) {
     return $listaErros;
 }
 
-function adicionaValoresASession($nome, $descricao, $listaErros) {
+function adicionaStatusSession($nome, $descricao, $listaErros) {
     $_SESSION['nome'] = $nome;
     $_SESSION['descricao'] = $descricao;
     $_SESSION['listaErros'] = $listaErros;
