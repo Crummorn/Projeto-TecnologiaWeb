@@ -2,6 +2,8 @@
 require_once ("conecta.php");
 require_once ("status-service.php");
 
+$statusService = new StatusService();
+
 function insereStatus($conexao, $nome, $descricao) {
     $nome = mysqli_real_escape_string($conexao, $nome);
     $descricao = mysqli_real_escape_string($conexao, $descricao);
@@ -14,8 +16,7 @@ function insereStatus($conexao, $nome, $descricao) {
         die(); 
     }
 
-    $service = new StatusService();
-    return $service->adicionar($conexao, $nome, $descricao);
+    return $GLOBALS['statusService']->adicionar($conexao, $nome, $descricao);
 }
 
 function alteraStatus($conexao, $id, $nome, $descricao) {
@@ -30,8 +31,41 @@ function alteraStatus($conexao, $id, $nome, $descricao) {
         die(); 
     }
 
-    $service = new StatusService();
-    return $service->alterar($conexao, $id, $nome, $descricao);
+    return $GLOBALS['statusService']->alterar($conexao, $id, $nome, $descricao);
+}
+
+function removeStatus($conexao, $id) {
+    if (testaStatusNaoEstaSendoUsada($conexao, $id)) {
+        return $GLOBALS['statusService']->remover($conexao, $id);
+    } else {   
+        $status = buscaStatus($conexao, $id);     
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Status ' . $status['nome'] . ' não pode ser removido, está sendo utilizada!';
+        header("Location: ../listagem.php");    
+        die();
+    }
+}
+
+function listaStatus($conexao) {
+    return $GLOBALS['statusService']->listaStatus($conexao);
+}
+
+function buscaStatus($conexao, $id) {
+    return $GLOBALS['statusService']->buscaStatus($conexao, $id);
+}
+
+function totalStatuss($conexao) {
+    return $GLOBALS['statusService']->totalStatuss($conexao);
+}
+
+
+/*
+ * Funções de Utilidade
+ */
+
+// Ainda não esta funcionando, somente quando o Pedido for implementado ira funcionar.
+function testaStatusNaoEstaSendoUsada($conexao, $id) {
+    return true;
 }
 
 function validaStatus($nome, $descricao) {
@@ -53,48 +87,4 @@ function adicionaStatusSession($nome, $descricao, $listaErros) {
     $_SESSION['descricao'] = $descricao;
     $_SESSION['listaErros'] = $listaErros;
     $_SESSION['alertType'] = 'danger';
-}
-
-function removeStatus($conexao, $id) {
-    $service = new StatusService();
-
-    if (testaStatusNaoEstaSendoUsada($conexao, $id)) {
-        return $service->remover($conexao, $id);
-    } else {   
-        $status = buscaStatus($conexao, $id);     
-        $_SESSION['alertType'] = 'danger';
-        $_SESSION['alertMsg'] = 'Status ' . $status['nome'] . ' não pode ser removido, está sendo utilizada!';
-        header("Location: ../listagem.php");    
-        die();
-    }
-}
-
-function testaStatusNaoEstaSendoUsada($conexao, $id) {
-/*
-    $query = "SELECT * FROM pedido WHERE pedido.status_pedido_id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado->num_rows === 0 ? true : false;
-*/
-    return true;
-}
-
-function listaStatus($conexao) {
-    $statuss = array();
-    $resultado = mysqli_query($conexao, "SELECT * FROM status_pedido");
-    while($status = mysqli_fetch_assoc($resultado)) {
-        array_push($statuss, $status);
-    }
-    return $statuss;
-}
-
-function buscaStatus($conexao, $id) {
-    $query = "SELECT * FROM status_pedido WHERE id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
-    return mysqli_fetch_assoc($resultado);
-}
-
-function totalStatuss($conexao) {
-    $query = "SELECT * FROM status_pedido";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado->num_rows;
 }

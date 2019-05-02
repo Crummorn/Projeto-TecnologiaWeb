@@ -16,6 +16,27 @@ class StatusService {
         $query = "DELETE FROM status_pedido WHERE id = {$id}";
         return mysqli_query($conexao, $query);
     }
+    
+    function listaStatus($conexao) {
+        $statuss = array();
+        $resultado = mysqli_query($conexao, "SELECT * FROM status_pedido");
+        while($status = mysqli_fetch_assoc($resultado)) {
+            array_push($statuss, $status);
+        }
+        return $statuss;
+    }
+
+    function buscaStatus($conexao, $id) {
+        $query = "SELECT * FROM status_pedido WHERE id = {$id}";
+        $resultado = mysqli_query($conexao, $query);
+        return mysqli_fetch_assoc($resultado);
+    }
+
+    function totalStatuss($conexao) {
+        $query = "SELECT * FROM status_pedido";
+        $resultado = mysqli_query($conexao, $query);
+        return $resultado->num_rows;
+    }
 }
 
 ?>
