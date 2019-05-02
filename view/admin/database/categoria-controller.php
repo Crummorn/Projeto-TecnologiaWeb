@@ -4,14 +4,46 @@ require_once ("categoria-service.php");
 
 function insereCategoria($conexao, $nome) {
     $nome = mysqli_real_escape_string($conexao, $nome);
+
+    $listaErros = validaCategoria($nome);
+
+    if (count($listaErros) > 0) {
+        $_SESSION['nome'] = $nome;
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['listaErros'] = $listaErros;
+        header("Location: ../adiciona-form.php");    
+        die(); 
+    }
+
     $service = new CategoriaService();
     return $service->adicionar($conexao, $nome);
 }
 
 function alteraCategoria($conexao, $id, $nome) {
     $nome = mysqli_real_escape_string($conexao, $nome);
+    
+    $listaErros = validaCategoria($nome);
+
+    if (count($listaErros) > 0) {
+        $_SESSION['nome'] = $nome;
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['listaErros'] = $listaErros;
+        header("Location: ../altera-form.php?id=".$id);  
+        die(); 
+    }
+    
     $service = new CategoriaService();
     return $service->alterar($conexao, $id, $nome);
+}
+
+function validaCategoria($nome) {
+    $listaErros = array();
+
+    if ((mb_strlen($nome) < 3) OR (mb_strlen($nome) > 100)) {
+        array_push($listaErros, 'Campo Nome precisa ter no min 3 carcteres e no max 100 caracteres!');
+    }
+
+    return $listaErros;
 }
 
 function removeCategoria($conexao, $id) {
