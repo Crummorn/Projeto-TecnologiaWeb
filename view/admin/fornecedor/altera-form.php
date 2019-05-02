@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+    
     require_once ("../database/fornecedor-controller.php"); 
 
     $titulo = "Painel Administrativo - Fornecedores"; 
@@ -7,11 +9,27 @@
 
     $fornecedor = buscaFornecedor($conexao, $_GET['id']);
 
+    if (isset($_SESSION['cnpj'])) { 
+        $fornecedor['cnpj'] = $_SESSION['cnpj'];
+        unset($_SESSION['cnpj']);
+    } 
+    if (isset($_SESSION['nome'])) { 
+        $fornecedor['nome'] = $_SESSION['nome'];
+        unset($_SESSION['nome']);
+    } 
+    if (isset($_SESSION['endereco'])) { 
+        $fornecedor['endereco'] = $_SESSION['endereco'];
+        unset($_SESSION['endereco']);
+    } 
+    if (isset($_SESSION['contato'])) { 
+        $fornecedor['contato'] = $_SESSION['contato'];
+        unset($_SESSION['contato']);
+    } 
+
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
-    session_start();
 ?>
 
 <!-- Content -->
@@ -36,6 +54,7 @@
                                 <form action="controller/alterar.php" method="POST">
                                     <input type="hidden" name="id" value="<?=$fornecedor['id']?>" />
                                     
+                                    <?php include("../fragments/alertas-genericos.php") ?>
                                     <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">
