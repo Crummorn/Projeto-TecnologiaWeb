@@ -7,6 +7,15 @@
 
     $status = buscaStatus($conexao, $_GET['id']);
 
+    if (isset($_SESSION['nome'])) { 
+        $status['nome'] = $_SESSION['nome'];
+        unset($_SESSION['nome']);
+    } 
+    if (isset($_SESSION['descricao'])) { 
+        $status['descricao'] = $_SESSION['descricao'];
+        unset($_SESSION['descricao']);
+    } 
+
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
@@ -36,6 +45,7 @@
                                 <form action="controller/alterar.php" method="POST">
                                     <input type="hidden" name="id" value="<?=$status['id']?>" />
                                     
+                                    <?php include("../fragments/alertas-genericos.php") ?>
                                     <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">

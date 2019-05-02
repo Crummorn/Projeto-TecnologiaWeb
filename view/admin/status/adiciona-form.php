@@ -1,15 +1,25 @@
 <?php 
+    session_start();
+
     $titulo = "Painel Administrativo - Status do Pedido"; 
     $paginaAtual = "Status";  
     $header = "Status do Pedido";
 
     $status = array("nome" => "", "descricao" => "");
 
+    if (isset($_SESSION['nome'])) { 
+        $status['nome'] = $_SESSION['nome'];
+        unset($_SESSION['nome']);
+    } 
+    if (isset($_SESSION['descricao'])) { 
+        $status['descricao'] = $_SESSION['descricao'];
+        unset($_SESSION['descricao']);
+    } 
+
     require_once ("../fragments/funcoes-basicas.php"); 
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
-    session_start();
 ?>
 
 <!-- Content -->
@@ -32,6 +42,7 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <form action="controller/adicionar.php" method="POST">
+                                    <?php include("../fragments/alertas-genericos.php") ?>
                                     <?php include("fragments/form-base.php") ?>
 
                                     <button type="submit" class="btn btn-primary">

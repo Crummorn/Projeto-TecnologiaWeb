@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    
     $titulo = "Painel Administrativo - Fornecedores"; 
     $paginaAtual = "Fornecedor";  
     $header = "Fornecedores";
