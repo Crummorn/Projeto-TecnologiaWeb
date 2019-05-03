@@ -1,5 +1,5 @@
 <?php 
-    require_once ("../database/fornecedor-controller.php"); 
+    require_once ("../database/FornecedorController.php"); 
 
     $titulo = "Painel Administrativo - Fornecedores"; 
     $paginaAtual = "Fornecedor";    

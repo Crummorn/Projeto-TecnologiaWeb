@@ -1,5 +1,5 @@
 <?php 
-require_once("../../database/categoria-controller.php");
+require_once("../../database/CategoriaController.php");
 
 session_start();
 

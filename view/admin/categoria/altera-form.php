@@ -1,7 +1,7 @@
 <?php 
     session_start();
     
-    require_once ("../database/categoria-controller.php"); 
+    require_once ("../database/CategoriaController.php"); 
 
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";    

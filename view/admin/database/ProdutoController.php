@@ -1,6 +1,6 @@
 <?php
-require_once ("conecta.php");
-require_once ("produto-service.php");
+require_once ("DataSource.php");
+require_once ("ProdutoService.php");
 
 $produtoService = new ProdutoService();
 

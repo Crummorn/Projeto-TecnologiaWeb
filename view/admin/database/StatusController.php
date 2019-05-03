@@ -1,6 +1,6 @@
 <?php
-require_once ("conecta.php");
-require_once ("status-service.php");
+require_once ("DataSource.php");
+require_once ("StatusService.php");
 
 $statusService = new StatusService();
 

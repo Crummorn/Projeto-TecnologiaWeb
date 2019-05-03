@@ -1,6 +1,6 @@
 <?php
-require_once ("conecta.php");
-require_once ("fornecedor-service.php");
+require_once ("DataSource.php");
+require_once ("FornecedorService.php");
 
 $fornecedorService = new FornecedorService();
 

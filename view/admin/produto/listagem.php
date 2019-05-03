@@ -1,5 +1,5 @@
 <?php 
-    require_once ("../database/produto-controller.php"); 
+    require_once ("../database/ProdutoController.php"); 
 
     $titulo = "Painel Administrativo - Produtos"; 
     $paginaAtual = "Produto";    

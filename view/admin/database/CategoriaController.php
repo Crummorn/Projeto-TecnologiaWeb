@@ -1,6 +1,6 @@
 <?php
-require_once ("conecta.php");
-require_once ("categoria-service.php");
+require_once ("DataSource.php");
+require_once ("CategoriaService.php");
 
 $categoriaService = new CategoriaService();
 

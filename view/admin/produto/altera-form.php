@@ -1,9 +1,9 @@
 <?php 
     session_start();
     
-    require_once ("../database/categoria-controller.php"); 
-    require_once ("../database/fornecedor-controller.php");
-    require_once ("../database/produto-controller.php"); 
+    require_once ("../database/CategoriaController.php"); 
+    require_once ("../database/FornecedorController.php");
+    require_once ("../database/ProdutoController.php"); 
 
     $titulo = "Painel Administrativo - Produtos"; 
     $paginaAtual = "Produto";  

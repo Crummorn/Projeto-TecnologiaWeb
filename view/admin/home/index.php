@@ -1,8 +1,8 @@
 <?php     
-    require_once ("../database/categoria-controller.php"); 
-    require_once ("../database/fornecedor-controller.php"); 
-    require_once ("../database/produto-controller.php"); 
-    require_once ("../database/status-controller.php"); 
+    require_once ("../database/CategoriaController.php"); 
+    require_once ("../database/FornecedorController.php"); 
+    require_once ("../database/ProdutoController.php"); 
+    require_once ("../database/StatusController.php"); 
 
     $titulo = "Painel Administrativo - Index"; 
     $paginaAtual = "Home";

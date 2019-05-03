@@ -1,5 +1,5 @@
 <?php 
-require_once("../../database/produto-controller.php");
+require_once("../../database/ProdutoController.php");
 session_start();
 
 $id = $_POST["id"];

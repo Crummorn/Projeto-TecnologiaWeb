@@ -1,5 +1,5 @@
 <?php 
-    require_once ("../database/status-controller.php"); 
+    require_once ("../database/StatusController.php"); 
 
     $titulo = "Painel Administrativo - Status do Pedido"; 
     $paginaAtual = "Status";  
