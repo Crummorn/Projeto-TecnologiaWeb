@@ -10,7 +10,7 @@
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
     
-    $statuss = listaStatus($conexao);
+    $statuss = listaStatus();
     session_start();
 ?>
 

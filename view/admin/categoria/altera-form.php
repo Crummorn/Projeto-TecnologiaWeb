@@ -7,7 +7,7 @@
     $paginaAtual = "Categoria";    
     $header = "Categorias";
 
-    $categoria = buscaCategoria($conexao, $_GET['id']);
+    $categoria = buscaCategoria($_GET['id']);
 
     if (isset($_SESSION['nome'])) { 
         $categoria['nome'] = $_SESSION['nome'];

@@ -8,8 +8,8 @@
     $paginaAtual = "Produto";  
     $header = "Produto";
 
-    $categorias = listaCategorias($conexao);
-    $fornecedores = listaFornecedores($conexao);
+    $categorias = listaCategorias();
+    $fornecedores = listaFornecedores();
 
     $produto = array("nome" => "", "valor" => "", "descricao" => "", "peso" => "", "estoque" => "", "custo" => "", "categoria_id" => "", "fornecedor_id" => "");
     if (isset($_SESSION['nome'])) { 

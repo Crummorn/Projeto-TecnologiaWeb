@@ -10,7 +10,7 @@
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
     
-    $fornecedores = listaFornecedores($conexao);
+    $fornecedores = listaFornecedores();
     session_start();
 ?>
 

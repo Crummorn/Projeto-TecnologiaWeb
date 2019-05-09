@@ -1,15 +1,9 @@
 <?php
-require_once ("DataSource.php");
 require_once ("FornecedorService.php");
 
 $fornecedorService = new FornecedorService();
 
-function insereFornecedor($conexao, $cnpj, $nome, $endereco, $contato) {
-    $cnpj = mysqli_real_escape_string($conexao, $cnpj);
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $endereco = mysqli_real_escape_string($conexao, $endereco);
-    $contato = mysqli_real_escape_string($conexao, $contato);
-    
+function insereFornecedor($cnpj, $nome, $endereco, $contato) {
     $listaErros = validaFornecedor($cnpj, $nome, $endereco, $contato);
 
     if (count($listaErros) > 0) {        
@@ -18,15 +12,10 @@ function insereFornecedor($conexao, $cnpj, $nome, $endereco, $contato) {
         die(); 
     }
 
-    return $GLOBALS['fornecedorService']->adicionar($conexao, $cnpj, $nome, $endereco, $contato);
+    return $GLOBALS['fornecedorService']->adicionar($cnpj, $nome, $endereco, $contato);
 }
 
-function alteraFornecedor($conexao, $id, $cnpj, $nome, $endereco, $contato) {
-    $cnpj = mysqli_real_escape_string($conexao, $cnpj);
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $endereco = mysqli_real_escape_string($conexao, $endereco);
-    $contato = mysqli_real_escape_string($conexao, $contato);
-    
+function alteraFornecedor($id, $cnpj, $nome, $endereco, $contato) {
     $listaErros = validaFornecedor($cnpj, $nome, $endereco, $contato);
 
     if (count($listaErros) > 0) {       
@@ -35,14 +24,14 @@ function alteraFornecedor($conexao, $id, $cnpj, $nome, $endereco, $contato) {
         die(); 
     }
 
-    return $GLOBALS['fornecedorService']->alterar($conexao, $id, $cnpj, $nome, $endereco, $contato);
+    return $GLOBALS['fornecedorService']->alterar($id, $cnpj, $nome, $endereco, $contato);
 }
 
-function removeFornecedor($conexao, $id) {
-    if (testaFornecedorNaoEstaSendoUsada($conexao, $id)) {
-        return $GLOBALS['fornecedorService']->remover($conexao, $id);
+function removeFornecedor($id) {
+    if (testaFornecedorNaoEstaSendoUsada($id)) {
+        return $GLOBALS['fornecedorService']->remover($id);
     } else {   
-        $fornecedor = buscaFornecedor($conexao, $id);     
+        $fornecedor = buscaFornecedor($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Fornecedor ' . $fornecedor['nome'] . ' não pode ser removido, está sendo utilizada!';
         header("Location: ../listagem.php");    
@@ -50,24 +39,24 @@ function removeFornecedor($conexao, $id) {
     }
 }
 
-function listaFornecedores($conexao) {
-    return $GLOBALS['fornecedorService']->listaFornecedores($conexao);
+function listaFornecedores() {
+    return $GLOBALS['fornecedorService']->listaFornecedores();
 }
 
-function buscaFornecedor($conexao, $id) {
-    return $GLOBALS['fornecedorService']->buscaFornecedor($conexao, $id);
+function buscaFornecedor($id) {
+    return $GLOBALS['fornecedorService']->buscaFornecedor($id);
 }
 
-function totalFornecedores($conexao) {
-    return $GLOBALS['fornecedorService']->totalFornecedores($conexao);
+function totalFornecedores() {
+    return $GLOBALS['fornecedorService']->totalFornecedores();
 }
 
 /*
  * Funções de Utilidade
  */
 
-function testaFornecedorNaoEstaSendoUsada($conexao, $id) {
-    return $GLOBALS['fornecedorService']->testaFornecedorNaoEstaSendoUsada($conexao, $id);
+function testaFornecedorNaoEstaSendoUsada($id) {
+    return $GLOBALS['fornecedorService']->testaFornecedorNaoEstaSendoUsada($id);
 }
 
 function validaFornecedor($cnpj, $nome, $endereco, $contato) {

@@ -10,7 +10,7 @@
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
     
-    $produtos = listaProdutos($conexao);
+    $produtos = listaProdutos();
     session_start();
 ?>
 

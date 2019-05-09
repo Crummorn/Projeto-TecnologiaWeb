@@ -1,13 +1,9 @@
 <?php
-require_once ("DataSource.php");
 require_once ("ProdutoService.php");
 
 $produtoService = new ProdutoService();
 
-function insereProduto($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $descricao = mysqli_real_escape_string($conexao, $descricao);
-
+function insereProduto($nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
     $listaErros = validaProduto($nome, $descricao, $valor);
 
     if (count($listaErros) > 0) {
@@ -16,13 +12,10 @@ function insereProduto($conexao, $nome, $valor, $descricao, $peso, $estoque, $cu
         die(); 
     }
 
-    return $GLOBALS['produtoService']->adicionar($conexao, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
+    return $GLOBALS['produtoService']->adicionar($nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
 }
 
-function alteraProduto($conexao, $id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $descricao = mysqli_real_escape_string($conexao, $descricao);
-
+function alteraProduto($id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id) {
     $listaErros = validaProduto($nome, $descricao, $valor);
 
     if (count($listaErros) > 0) {
@@ -31,48 +24,48 @@ function alteraProduto($conexao, $id, $nome, $valor, $descricao, $peso, $estoque
         die(); 
     }
 
-    return $GLOBALS['produtoService']->alterar($conexao, $id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
+    return $GLOBALS['produtoService']->alterar($id, $nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id);
 }
 
-function removeProduto($conexao, $id) {
-    return $GLOBALS['produtoService']->remover($conexao, $id);
+function removeProduto($id) {
+    return $GLOBALS['produtoService']->remover($id);
 }
 
-function listaProdutos($conexao) {
-    return $GLOBALS['produtoService']->listaProdutos($conexao);
+function listaProdutos() {
+    return $GLOBALS['produtoService']->listaProdutos();
 }
 
-function buscaProduto($conexao, $id) {
-    return $GLOBALS['produtoService']->buscaProduto($conexao, $id);
+function buscaProduto($id) {
+    return $GLOBALS['produtoService']->buscaProduto($id);
 }
 
-function totalProdutos($conexao) {
-    return $GLOBALS['produtoService']->totalProdutos($conexao);
+function totalProdutos() {
+    return $GLOBALS['produtoService']->totalProdutos();
 }
 
-function totalEstoqueProdutos($conexao) {
-    return $GLOBALS['produtoService']->totalEstoqueProdutos($conexao);
+function totalEstoqueProdutos() {
+    return $GLOBALS['produtoService']->totalEstoqueProdutos();
 }
 
-function possivelLucroDeUmProdutoEspecifico($conexao, $id) {
-    return $GLOBALS['produtoService']->possivelLucroDeUmProdutoEspecifico($conexao, $id);
+function possivelLucroDeUmProdutoEspecifico($id) {
+    return $GLOBALS['produtoService']->possivelLucroDeUmProdutoEspecifico($id);
 }
 
-function totalEstoqueProdutosFornecedorEspecifico($conexao, $fornecedor_id) {
-    return $GLOBALS['produtoService']->totalEstoqueProdutosFornecedorEspecifico($conexao, $fornecedor_id);
+function totalEstoqueProdutosFornecedorEspecifico($fornecedor_id) {
+    return $GLOBALS['produtoService']->totalEstoqueProdutosFornecedorEspecifico($fornecedor_id);
 }
  
-function adicionarEstoque($conexao, $id, $quantidade) {
-    $produto = buscaProduto($conexao, $id);
-    return alteraProduto($conexao, $id, $produto['nome'], $produto['valor'], $produto['descricao'], $produto['peso'], ($produto['estoque'] + $quantidade), $produto['custo'], $produto['categoria_id'], $produto['fornecedor_id']);
+function adicionarEstoque($id, $quantidade) {
+    $produto = buscaProduto($id);
+    return alteraProduto($id, $produto['nome'], $produto['valor'], $produto['descricao'], $produto['peso'], ($produto['estoque'] + $quantidade), $produto['custo'], $produto['categoria_id'], $produto['fornecedor_id']);
 }
 
-function darBaixaNoEstoque($conexao, $id, $quantidade) {
-    $produto = buscaProduto($conexao, $id);
+function darBaixaNoEstoque($id, $quantidade) {
+    $produto = buscaProduto($id);
     if ($produto['estoque'] > $quantidade) {
-        return alteraProduto($conexao, $id, $produto['nome'], $produto['valor'], $produto['descricao'], $produto['peso'], ($produto['estoque'] - $quantidade), $produto['custo'], $produto['categoria_id'], $produto['fornecedor_id']);
+        return alteraProduto($id, $produto['nome'], $produto['valor'], $produto['descricao'], $produto['peso'], ($produto['estoque'] - $quantidade), $produto['custo'], $produto['categoria_id'], $produto['fornecedor_id']);
     } else {
-        $produto = buscaProduto($conexao, $id);     
+        $produto = buscaProduto($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Produto ' . $produto['nome'] . ' não tem estoque suficiente!';
         header("Location: ../listagem.php");    

@@ -4,10 +4,7 @@ require_once ("StatusService.php");
 
 $statusService = new StatusService();
 
-function insereStatus($conexao, $nome, $descricao) {
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $descricao = mysqli_real_escape_string($conexao, $descricao);
-
+function insereStatus($nome, $descricao) {
     $listaErros = validaStatus($nome, $descricao);
 
     if (count($listaErros) > 0) {        
@@ -16,13 +13,10 @@ function insereStatus($conexao, $nome, $descricao) {
         die(); 
     }
 
-    return $GLOBALS['statusService']->adicionar($conexao, $nome, $descricao);
+    return $GLOBALS['statusService']->adicionar($nome, $descricao);
 }
 
-function alteraStatus($conexao, $id, $nome, $descricao) {
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $descricao = mysqli_real_escape_string($conexao, $descricao);
-
+function alteraStatus($id, $nome, $descricao) {
     $listaErros = validaStatus($nome, $descricao);
 
     if (count($listaErros) > 0) {        
@@ -31,14 +25,14 @@ function alteraStatus($conexao, $id, $nome, $descricao) {
         die(); 
     }
 
-    return $GLOBALS['statusService']->alterar($conexao, $id, $nome, $descricao);
+    return $GLOBALS['statusService']->alterar($id, $nome, $descricao);
 }
 
-function removeStatus($conexao, $id) {
-    if (testaStatusNaoEstaSendoUsada($conexao, $id)) {
-        return $GLOBALS['statusService']->remover($conexao, $id);
+function removeStatus($id) {
+    if (testaStatusNaoEstaSendoUsada($id)) {
+        return $GLOBALS['statusService']->remover($id);
     } else {   
-        $status = buscaStatus($conexao, $id);     
+        $status = buscaStatus($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Status ' . $status['nome'] . ' não pode ser removido, está sendo utilizada!';
         header("Location: ../listagem.php");    
@@ -46,16 +40,16 @@ function removeStatus($conexao, $id) {
     }
 }
 
-function listaStatus($conexao) {
-    return $GLOBALS['statusService']->listaStatus($conexao);
+function listaStatus() {
+    return $GLOBALS['statusService']->listaStatus();
 }
 
-function buscaStatus($conexao, $id) {
-    return $GLOBALS['statusService']->buscaStatus($conexao, $id);
+function buscaStatus($id) {
+    return $GLOBALS['statusService']->buscaStatus($id);
 }
 
-function totalStatuss($conexao) {
-    return $GLOBALS['statusService']->totalStatuss($conexao);
+function totalStatuss() {
+    return $GLOBALS['statusService']->totalStatuss();
 }
 
 
@@ -64,7 +58,7 @@ function totalStatuss($conexao) {
  */
 
 // Ainda não esta funcionando, somente quando o Pedido for implementado ira funcionar.
-function testaStatusNaoEstaSendoUsada($conexao, $id) {
+function testaStatusNaoEstaSendoUsada($id) {
     return true;
 }
 

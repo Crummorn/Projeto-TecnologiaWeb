@@ -10,7 +10,7 @@
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
     
-    $categorias = listaCategorias($conexao);
+    $categorias = listaCategorias();
     session_start();
 ?>
 

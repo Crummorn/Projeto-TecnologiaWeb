@@ -1,11 +1,9 @@
 <?php
-require_once ("DataSource.php");
 require_once ("CategoriaService.php");
 
 $categoriaService = new CategoriaService();
 
-function insereCategoria($conexao, $nome) {
-    $nome = mysqli_real_escape_string($conexao, $nome);
+function insereCategoria($nome) {
 
     $listaErros = validaCategoria($nome);
 
@@ -15,12 +13,10 @@ function insereCategoria($conexao, $nome) {
         die(); 
     }
 
-    return $GLOBALS['categoriaService']->adicionar($conexao, $nome);
+    return $GLOBALS['categoriaService']->adicionar($nome);
 }
 
-function alteraCategoria($conexao, $id, $nome) {
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    
+function alteraCategoria($id, $nome) {
     $listaErros = validaCategoria($nome);
 
     if (count($listaErros) > 0) {
@@ -29,14 +25,14 @@ function alteraCategoria($conexao, $id, $nome) {
         die(); 
     }
     
-    return $GLOBALS['categoriaService']->alterar($conexao, $id, $nome);
+    return $GLOBALS['categoriaService']->alterar($id, $nome);
 }
 
-function removeCategoria($conexao, $id) {
-    if (testaCategoriaNaoEstaSendoUsada($conexao, $id)) {
-        return $GLOBALS['categoriaService']->remover($conexao, $id);
+function removeCategoria($id) {
+    if (testaCategoriaNaoEstaSendoUsada($id)) {
+        return $GLOBALS['categoriaService']->remover($id);
     } else {   
-        $categoria = buscaCategoria($conexao, $id);     
+        $categoria = buscaCategoria($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Categoria ' . $categoria['nome'] . ' não pode ser removida, está sendo utilizada!';
         header("Location: ../listagem.php");    
@@ -44,16 +40,16 @@ function removeCategoria($conexao, $id) {
     }
 }
 
-function listaCategorias($conexao) {
-    return $GLOBALS['categoriaService']->listaCategorias($conexao);
+function listaCategorias() {
+    return $GLOBALS['categoriaService']->listaCategorias();
 }
 
-function buscaCategoria($conexao, $id) {
-    return $GLOBALS['categoriaService']->buscaCategoria($conexao, $id);
+function buscaCategoria($id) {
+    return $GLOBALS['categoriaService']->buscaCategoria($id);
 }
 
-function totalCategorias($conexao) {
-    return $GLOBALS['categoriaService']->totalCategorias($conexao);
+function totalCategorias() {
+    return $GLOBALS['categoriaService']->totalCategorias();
 }
 
 
@@ -61,8 +57,8 @@ function totalCategorias($conexao) {
  * Funções de Utilidade
  */
 
-function testaCategoriaNaoEstaSendoUsada($conexao, $id) {
-    return $GLOBALS['categoriaService']->testaCategoriaNaoEstaSendoUsada($conexao, $id);
+function testaCategoriaNaoEstaSendoUsada($id) {
+    return $GLOBALS['categoriaService']->testaCategoriaNaoEstaSendoUsada($id);
 }
 
 function validaCategoria($nome) {

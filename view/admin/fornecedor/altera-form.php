@@ -7,7 +7,7 @@
     $paginaAtual = "Fornecedor";    
     $header = "Fornecedores";
 
-    $fornecedor = buscaFornecedor($conexao, $_GET['id']);
+    $fornecedor = buscaFornecedor($_GET['id']);
 
     if (isset($_SESSION['cnpj'])) { 
         $fornecedor['cnpj'] = $_SESSION['cnpj'];

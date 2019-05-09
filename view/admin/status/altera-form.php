@@ -5,7 +5,7 @@
     $paginaAtual = "Status";  
     $header = "Status do Pedido";
 
-    $status = buscaStatus($conexao, $_GET['id']);
+    $status = buscaStatus($_GET['id']);
 
     if (isset($_SESSION['nome'])) { 
         $status['nome'] = $_SESSION['nome'];

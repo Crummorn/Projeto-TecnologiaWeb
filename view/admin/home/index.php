@@ -34,22 +34,22 @@
                             <div class="container-fluid">
                                 <p>
                                     <h3>Categorias</h3>
-                                    Total de Categorias: <?=totalCategorias($conexao)?>
+                                    Total de Categorias: <?=totalCategorias()?>
                                 </p>
                                 <p>
                                     <h3>Fornecedores</h3>
-                                    Total de Fornecedores: <?=totalFornecedores($conexao)?>
+                                    Total de Fornecedores: <?=totalFornecedores()?>
                                 </p>
                                 <p> 
                                     <h3>Produtos</h3>
-                                    Total de Produtos: <?=totalProdutos($conexao)?><br>
-                                    Total de Estoque de Produtos: <?=totalEstoqueProdutos($conexao)?><br>
-                                    Lucro possivel de 1: <?=possivelLucroDeUmProdutoEspecifico($conexao, 1)?><br>
-                                    Estoque Fornecedor 4: <?=totalEstoqueProdutosFornecedorEspecifico($conexao, 4)?>
+                                    Total de Produtos: <?=totalProdutos()?><br>
+                                    Total de Estoque de Produtos: <?=totalEstoqueProdutos()?><br>
+                                    Lucro possivel de 1: <?=possivelLucroDeUmProdutoEspecifico(1)?><br>
+                                    Estoque Fornecedor 4: <?=totalEstoqueProdutosFornecedorEspecifico(4)?>
                                 </p>
                                 <p> 
                                     <h3>Status Pedido</h3>
-                                    Total de Status_Pedido: <?=totalStatuss($conexao)?><br>
+                                    Total de Status_Pedido: <?=totalStatuss()?><br>
                                 </p>
                             </div>
                         </div>

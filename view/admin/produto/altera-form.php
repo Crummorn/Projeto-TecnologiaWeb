@@ -9,10 +9,10 @@
     $paginaAtual = "Produto";  
     $header = "Produto";
 
-    $categorias = listaCategorias($conexao);
-    $fornecedores = listaFornecedores($conexao);
+    $categorias = listaCategorias();
+    $fornecedores = listaFornecedores();
 
-    $produto = buscaProduto($conexao, $_GET['id']);
+    $produto = buscaProduto($_GET['id']);
     if (isset($_SESSION['nome'])) { 
         $produto['nome'] = $_SESSION['nome'];
         unset($_SESSION['nome']);
