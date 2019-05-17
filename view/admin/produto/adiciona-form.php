@@ -1,6 +1,9 @@
 <?php 
     session_start();
 
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
+
     require_once ("../database/CategoriaController.php"); 
     require_once ("../database/FornecedorController.php"); 
  

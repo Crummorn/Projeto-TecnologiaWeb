@@ -2,6 +2,9 @@
 require_once("../../database/FornecedorController.php");
 session_start();
 
+require_once ("../../database/LoginController.php"); 
+verificaUsuario();
+
 $cnpj = $_POST["cnpj"];
 $nome = $_POST["nome"];
 $endereco = $_POST["endereco"];

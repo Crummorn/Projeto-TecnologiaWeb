@@ -1,8 +1,14 @@
 <?php     
+    session_start();
+
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
+    
     require_once ("../database/CategoriaController.php"); 
     require_once ("../database/FornecedorController.php"); 
     require_once ("../database/ProdutoController.php"); 
     require_once ("../database/StatusController.php"); 
+
 
     $titulo = "Painel Administrativo - Index"; 
     $paginaAtual = "Home";
@@ -11,6 +17,7 @@
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
+    
 ?>
 
 <!-- Content -->
@@ -31,7 +38,10 @@
                         <div class="card-header"><?=$paginaAtual?></div>
 
                         <div class="card-body">
-                            <div class="container-fluid">
+                            <div class="container-fluid">       
+                                <!-- Alertas-->
+                                <?php include ("../fragments/alertas-genericos.php"); ?>
+                                
                                 <p>
                                     <h3>Categorias</h3>
                                     Total de Categorias: <?=totalCategorias()?>

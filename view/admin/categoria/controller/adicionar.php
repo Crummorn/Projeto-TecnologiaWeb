@@ -1,6 +1,9 @@
 <?php 
-require_once("../../database/CategoriaController.php");
+require_once("../../database/CategoriaController.php");     
 session_start();
+
+require_once ("../../database/LoginController.php"); 
+verificaUsuario();
 
 $nome = $_POST["nome"];
 

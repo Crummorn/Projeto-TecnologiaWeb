@@ -1,6 +1,9 @@
 <?php 
     session_start();
 
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
+
     $titulo = "Painel Administrativo - Status do Pedido"; 
     $paginaAtual = "Status";  
     $header = "Status do Pedido";

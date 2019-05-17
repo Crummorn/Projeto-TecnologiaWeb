@@ -1,7 +1,9 @@
 <?php 
 require_once("../../database/CategoriaController.php");
-
 session_start();
+
+require_once ("../../database/LoginController.php"); 
+verificaUsuario();
 
 $id = $_POST['id'];
 $categoria = buscaCategoria($id);

@@ -1,4 +1,9 @@
 <?php 
+    session_start();
+
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
+
     require_once ("../database/StatusController.php"); 
 
     $titulo = "Painel Administrativo - Status do Pedido"; 
@@ -20,7 +25,6 @@
     require_once ("../fragments/head.php");  
     require_once ("../fragments/navbar.php");  
     require_once ("../fragments/sidebar.php"); 
-    session_start();
 ?>
 
 <!-- Content -->

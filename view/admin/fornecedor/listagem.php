@@ -1,5 +1,9 @@
 <?php 
     require_once ("../database/FornecedorController.php"); 
+    session_start();
+
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
 
     $titulo = "Painel Administrativo - Fornecedores"; 
     $paginaAtual = "Fornecedor";    
@@ -11,7 +15,6 @@
     require_once ("../fragments/sidebar.php"); 
     
     $fornecedores = listaFornecedores();
-    session_start();
 ?>
 
 <!-- Content -->

@@ -1,4 +1,9 @@
 <?php 
+    session_start();
+
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
+
     require_once ("../database/ProdutoController.php"); 
 
     $titulo = "Painel Administrativo - Produtos"; 
@@ -11,7 +16,6 @@
     require_once ("../fragments/sidebar.php"); 
     
     $produtos = listaProdutos();
-    session_start();
 ?>
 
 <!-- Content -->

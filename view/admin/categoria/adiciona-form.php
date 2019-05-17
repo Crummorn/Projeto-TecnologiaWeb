@@ -1,5 +1,8 @@
 <?php 
     session_start();
+
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
     
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";  

@@ -2,6 +2,9 @@
 require_once("../../database/ProdutoController.php");
 session_start();
 
+require_once ("../../database/LoginController.php"); 
+verificaUsuario();
+
 $id = $_POST["id"];
 $nome = $_POST["nome"];
 $peso = $_POST["peso"];

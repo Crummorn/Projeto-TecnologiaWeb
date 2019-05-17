@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="../home/index.php" >Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto  pull-right">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Olá User... <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Olá <?= usuarioLogado() ?><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../home/controller/LogoutUsuario.php">
                     Loggout
                     <i class="fas fa-sign-out-alt ml-2"></i>
                 </a>

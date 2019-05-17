@@ -1,5 +1,9 @@
 <?php 
     require_once ("../database/CategoriaController.php");
+    session_start();
+    
+    require_once ("../database/LoginController.php"); 
+    verificaUsuario();
     
     $titulo = "Painel Administrativo - Categorias"; 
     $paginaAtual = "Categoria";
@@ -11,7 +15,6 @@
     require_once ("../fragments/sidebar.php"); 
     
     $categorias = listaCategorias();
-    session_start();
 ?>
 
 <!-- Content -->
