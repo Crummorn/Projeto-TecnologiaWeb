@@ -8,6 +8,7 @@
     require_once ("../Database/FornecedorController.php"); 
     require_once ("../Database/ProdutoController.php"); 
     require_once ("../Database/StatusController.php"); 
+    require_once ("../Database/UsuarioController.php"); 
 
     $fonecedores = listaFornecedores();
 
@@ -69,6 +70,14 @@
                                 <p> 
                                     <h3>Status Pedido</h3>
                                     Total de Status_Pedido: <?=totalStatuss()?><br>
+                                </p>
+                                <p> 
+                                    <h3>Usuarios</h3>
+                                    Total de Usuarios Cadastrados: <?=totalUsuarios()?>
+                                    <br>
+                                    Total de Usuarios Ativos: <?=totalUsuariosAtivos()?>
+                                    <br>
+                                    Total de Usuarios Desativados: <?=totalUsuariosDesativados()?>
                                 </p>
                             </div>
                         </div>

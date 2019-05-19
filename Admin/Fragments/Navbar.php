@@ -7,11 +7,17 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto  pull-right">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Olá <?= usuarioLogado() ?><span class="sr-only">(current)</span></a>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Olá <?= usuarioLogado() ?><span class="sr-only">(current)</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../Usuario/Altera-Dados-Form.php">Alterar Dados</a>
+                    <a class="dropdown-item" href="../Usuario/Altera-Senha-Form.php">Alterar Senha</a>
+                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../home/controller/LogoutUsuario.php">
+                <a class="nav-link" href="../Home/Controller/LogoutUsuario.php">
                     Loggout
                     <i class="fas fa-sign-out-alt ml-2"></i>
                 </a>

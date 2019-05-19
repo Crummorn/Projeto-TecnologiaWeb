@@ -10,9 +10,13 @@ if($usuario == null) {
     $_SESSION['alertType'] = 'danger';
     $_SESSION['alertMsg'] = 'Usuário ou senha inválido!';
     header("Location: ../login.php"); 
-    die();
-} else { 
-    logaUsuario($usuario["nome"]);
+} else if ($usuario['ativo']) { 
+    logaUsuario($usuario);
     header("Location: ../index.php");  
-    die();
+} else {
+    $_SESSION['alertType'] = 'danger';
+    $_SESSION['alertMsg'] = 'Usuário desativado!';
+    header("Location: ../login.php"); 
 }
+
+die();

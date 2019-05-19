@@ -33,15 +33,17 @@ function usuarioLogado() {
     return $_SESSION["usuario_logado"];
 }
 
-function logaUsuario($nome) {
+function logaUsuario($usuario) {
     $_SESSION['alertType'] = 'success';
     $_SESSION['alertMsg'] = 'Logado com sucesso!';
-    $_SESSION["usuario_logado"] = $nome;
+    $_SESSION["usuario_logado"] = $usuario["nome"];
+    $_SESSION["usuarioDados"] = $usuario;
 }
 
 function logoutUsuario() {    
     session_start();
     unset($_SESSION["usuario_logado"]);
+    unset($_SESSION["usuarioDados"]);
     session_destroy();       
 
     session_start();    

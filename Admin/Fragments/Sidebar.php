@@ -29,6 +29,11 @@
                 <?php linkSidebarAtivo($paginaAtual, 'Status') ?>">
                 Status Pedido
             </a>
+            <a href="../Usuario/Listagem.php" 
+                class="list-group-item list-group-item-action bg-light
+                <?php linkSidebarAtivo($paginaAtual, 'Usuario') ?>">
+                Usuarios
+            </a>
         </div>
     </div>
 
