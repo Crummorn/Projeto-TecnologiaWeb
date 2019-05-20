@@ -1,5 +1,6 @@
 <?php
 require_once('DataSource.php');
+require_once('PermissaoController.php');
 class UsuarioService extends DataSource {
     private $conexao;
 
@@ -91,6 +92,7 @@ class UsuarioService extends DataSource {
         $resultado = mysqli_query($this->conexao, $query);
         return $resultado->num_rows;
     }
+
 }
 
 ?>

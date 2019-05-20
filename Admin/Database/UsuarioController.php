@@ -88,6 +88,23 @@ function alteraUsuarioSenha($id, $novaSenha, $novaSenha2) {
     return $GLOBALS['usuarioService']->alterarSenha($id, $novaSenha);
 }
 
+function alteraUsuarioPermissoes($id, $permissoes) {    
+    if ($id == 1) :      
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Você não pode alterar as permissões do usuario master!';
+        header("Location: ../Listagem.php");    
+        die();
+    endif;
+
+    deletarPermissoesUsuario($id);
+
+    foreach ($permissoes as $permissao) :
+        adicionarPermissaoAoUsuario($id, $permissao['id']);
+    endforeach;
+
+    return TRUE;
+}
+
 function ativaUsuario($id) {
     return $GLOBALS['usuarioService']->ativar($id);
 }
@@ -121,6 +138,10 @@ function totalUsuariosAtivos() {
 
 function totalUsuariosDesativados() {
     return $GLOBALS['usuarioService']->totalUsuariosDesativados();
+}
+
+function listarPermissaoUsuario($id) {
+    return $GLOBALS['usuarioService']->listaPermissaoUsuario();
 }
 
 /*

@@ -57,7 +57,7 @@
                                 <table class="table table-bordered table-hover mt-2">
                                     <thead>
                                         <tr>
-                                            <th class="col-md-3 text-center">
+                                            <th class="col-md-2 text-center">
                                                 Codigo 
                                             </th>
                                             <th class="col-md-3 text-center">
@@ -66,7 +66,7 @@
                                             <th class="col-md-3 text-center">
                                                 Email 
                                             </th>
-                                            <th class="col-md-3 text-center">Ações</th>
+                                            <th class="col-md-4 text-center">Ações</th>
                                         </tr>
                                     </thead>
 
@@ -86,6 +86,12 @@
                                                 </td>  
 
                                                 <td class="text-center form-inline">
+                                                    <a class="btn btn-success btn-xs mr-2" href="Altera-Permissao-Form.php?id=<?=$usuario['id']?>">
+                                                        <i class="fas fa-pencil-alt"></i>    
+                                                        <span class="d-none d-md-inline d-lg-inline">
+                                                            Permissoes 
+                                                        </span>
+                                                    </a>
                                                     <a class="btn btn-primary btn-xs mr-2" href="Altera-Form.php?id=<?=$usuario['id']?>">
                                                         <i class="fas fa-pencil-alt"></i>    
                                                         <span class="d-none d-md-inline d-lg-inline">
@@ -113,7 +119,6 @@
                                                             </button>
                                                         </form>
                                                     <?php endif ?>
-
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>
