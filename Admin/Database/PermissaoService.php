@@ -34,7 +34,7 @@ class PermissaoService extends DataSource {
     }
 
     function deletaPermissoesUsuario($id) {
-        $query = "DELETE FROM usuario_permissao WHERE 'usuario_id' = $id;";
+        $query = "DELETE FROM usuario_permissao WHERE usuario_permissao.usuario_id = $id;";
         return mysqli_query($this->conexao, $query);
     }
     
