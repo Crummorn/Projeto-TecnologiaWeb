@@ -26,20 +26,30 @@ CREATE TABLE `loja`.`usuario_permissao` (
 
 -- PERMISSAO
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_CATEGORIA', 'O usuario pode listar categorias.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ADICIONAR_CATEGORIA', 'O usuario pode adicionar categorias.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_CATEGORIA', 'O usuario pode alterar categorias.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('DELETAR_CATEGORIA', 'O usuario pode deletar categorias');
+
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_FORNECEDOR', 'O usuario pode listar fornecedores.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ADICIONAR_FORNECEDOR', 'O usuario pode adicionar fornecedores.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_FORNECEDOR', 'O usuario pode alterar fornecedores.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('DELETAR_FORNECEDOR', 'O usuario pode deletar fornecedores');
+
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_PRODUTOS', 'O usuario pode listar produtos.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ADICIONAR_PRODUTOS', 'O usuario pode adicionar produtos.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_PRODUTOS', 'O usuario pode alterar produtos.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('DELETAR_PRODUTOS', 'O usuario pode deletar produtos');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_ESTOQUE_PRODUTOS', 'O usuario pode alterar o estoque dos produtos.');
+
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_STATUS_PEDIDO', 'O usuario pode listar status dos pedidos.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ADICIONAR_STATUS_PEDIDO', 'O usuario pode adicionar status dos pedidos.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_STATUS_PEDIDO', 'O usuario pode alterar status dos pedidos.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('DELETAR_STATUS_PEDIDO', 'O usuario pode deletar status dos pedidos');
-INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_PERMISSOES', 'O usuario pode listar as permissões existentes.');
+
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_PERMISSOES', 'O usuario pode listar as permissoes existentes.');
+
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_USUARIOS', 'O usuario pode listar usuarios.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ADICIONAR_USUARIOS', 'O usuario pode adicionar usuarios.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_USUARIOS', 'O usuario pode alterar usuarios.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ATIVAR_DESATIVAR_USUARIOS', 'O usuario pode ativar ou desativar usuarios existentes.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_PERMISSOES_USUARIOS', 'O usuario pode alterar permissoes de usuarios existentes.');
@@ -65,6 +75,12 @@ INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '16');
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '17');
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '18');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '18');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '19');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '20');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '21');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '22');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '23');
 
 -- Senha: listar
 INSERT INTO `loja`.`usuario` (`email`, `senha`, `nome`) VALUES ('listar@loja.com', 'c1cd37dd21d421796ebbb9eb8b361813', 'Loja Lists');

@@ -1,8 +1,18 @@
 <?php 
     session_start();
-
+    
     require_once ("../Database/LoginController.php"); 
     verificaUsuario();
+    
+    $permissoes = $_SESSION["usuarioPermissoes"];
+    
+    if (testaPermissao(10)) {
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Você não tem permissão para executar está ação!';
+        header("Location: ../home/index.php");
+        die();
+    }
+
 
     require_once ("../Database/CategoriaController.php"); 
     require_once ("../Database/FornecedorController.php"); 

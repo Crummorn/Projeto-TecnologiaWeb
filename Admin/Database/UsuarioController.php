@@ -99,7 +99,7 @@ function alteraUsuarioPermissoes($id, $permissoes) {
     deletarPermissoesUsuario($id);
 
     foreach ($permissoes as $permissao) :
-        adicionarPermissaoAoUsuario($id, $permissao['id']);
+        adicionarPermissaoAoUsuario($id, $permissao);
     endforeach;
 
     return TRUE;

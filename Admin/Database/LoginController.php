@@ -29,21 +29,41 @@ function verificaUsuarioLogin() {
     }
 }
 
+function testaPermissao($id) {
+    $permissoes = $_SESSION["usuarioPermissoes"];
+
+    foreach ($permissoes as $permissao) :
+        if ($permissao['permissao_id'] == $id) :
+            return FALSE;
+        endif;
+    endforeach;
+
+    return TRUE;
+}
+
 function usuarioLogado() {
     return $_SESSION["usuario_logado"];
 }
 
-function logaUsuario($usuario) {
+function logaUsuario($usuario, $permissoes) {
     $_SESSION['alertType'] = 'success';
     $_SESSION['alertMsg'] = 'Logado com sucesso!';
     $_SESSION["usuario_logado"] = $usuario["nome"];
     $_SESSION["usuarioDados"] = $usuario;
+    $_SESSION["usuarioPermissoes"] = $permissoes;
+    $array = " ";
+    foreach ($permissoes as $permissao) :
+        $array = $array . "[permissao= " . $permissao['permissao_id'] . "], ";
+        array_push($_SESSION["usuarioPermissoes"], $permissao);
+    endforeach;
+    $_SESSION['alertMsg'] = 'Logado com sucesso! ' . $array;
 }
 
 function logoutUsuario() {    
     session_start();
     unset($_SESSION["usuario_logado"]);
     unset($_SESSION["usuarioDados"]);
+    unset($_SESSION["usuarioPermissoes"]);
     session_destroy();       
 
     session_start();    

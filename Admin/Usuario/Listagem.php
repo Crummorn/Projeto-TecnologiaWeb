@@ -4,6 +4,15 @@
     require_once ("../Database/LoginController.php"); 
     verificaUsuario();
     
+    $permissoes = $_SESSION["usuarioPermissoes"];
+    
+    if (testaPermissao(19)) {
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Você não tem permissão para executar está ação!';
+        header("Location: ../home/index.php");
+        die();
+    }
+    
     require_once ("../Database/UsuarioController.php");
 
     $titulo = "Painel Administrativo - Usuarios"; 
@@ -32,16 +41,19 @@
                             <h1>Listagem de <?=$header?></h1>
                         </div>
 
-                        <div class="col-md-2">
-                            <h1>
-                                <a class="btn btn-success" href="Adiciona-Form.php">
-                                    <i class="fa fa-plus"></i>
-                                    <span class="d-none d-md-inline d-lg-inline">
-                                        Adicionar
-                                    </span>
-                                </a>
-                            </h1>
-                        </div>
+                        
+                        <?php if (!testaPermissao(20)) : ?>
+                            <div class="col-md-2">
+                                <h1>
+                                    <a class="btn btn-success" href="Adiciona-Form.php">
+                                        <i class="fa fa-plus"></i>
+                                        <span class="d-none d-md-inline d-lg-inline">
+                                            Adicionar
+                                        </span>
+                                    </a>
+                                </h1>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Card Content -->
@@ -86,39 +98,48 @@
                                                 </td>  
 
                                                 <td class="text-center form-inline">
-                                                    <a class="btn btn-success btn-xs mr-2" href="Altera-Permissao-Form.php?id=<?=$usuario['id']?>">
-                                                        <i class="fas fa-pencil-alt"></i>    
-                                                        <span class="d-none d-md-inline d-lg-inline">
-                                                            Permissoes 
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-primary btn-xs mr-2" href="Altera-Form.php?id=<?=$usuario['id']?>">
-                                                        <i class="fas fa-pencil-alt"></i>    
-                                                        <span class="d-none d-md-inline d-lg-inline">
-                                                            Alterar 
-                                                        </span>
-                                                    </a>
-                                                    <?php if ($usuario['ativo']) : ?>
-                                                        <form action="Controller/Desativar.php" method="post">
-                                                            <input type="hidden" name="id" value="<?=$usuario['id']?>" />
-                                                            <button class="btn btn-danger btn-xs js-delete-button">
-                                                                <i class="fas fa-trash"></i> 
-                                                                <span class="d-none d-md-inline d-lg-inline">
-                                                                    Desativar
-                                                                </span>
-                                                            </button>
-                                                        </form>
-                                                    <?php else : ?>
-                                                        <form action="Controller/Ativar.php" method="post">
-                                                            <input type="hidden" name="id" value="<?=$usuario['id']?>" />
-                                                            <button class="btn btn-success btn-xs js-delete-button">
-                                                                <i class="fas fa-check"></i>
-                                                                <span class="d-none d-md-inline d-lg-inline">
-                                                                    Ativar
-                                                                </span>
-                                                            </button>
-                                                        </form>
-                                                    <?php endif ?>
+                                                    <?php if (!testaPermissao(23)) : ?>
+                                                        <a class="btn btn-success btn-xs mr-2" href="Altera-Permissao-Form.php?id=<?=$usuario['id']?>">
+                                                            <i class="fas fa-pencil-alt"></i>    
+                                                            <span class="d-none d-md-inline d-lg-inline">
+                                                                Permissoes 
+                                                            </span>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    
+                                                    
+                                                    <?php if (!testaPermissao(21)) : ?>
+                                                        <a class="btn btn-primary btn-xs mr-2" href="Altera-Form.php?id=<?=$usuario['id']?>">
+                                                            <i class="fas fa-pencil-alt"></i>    
+                                                            <span class="d-none d-md-inline d-lg-inline">
+                                                                Alterar 
+                                                            </span>
+                                                        </a>
+                                                    <?php endif; ?>                                                   
+                                                    
+                                                    <?php if (!testaPermissao(22)) : ?>
+                                                        <?php if ($usuario['ativo']) : ?>
+                                                            <form action="Controller/Desativar.php" method="post">
+                                                                <input type="hidden" name="id" value="<?=$usuario['id']?>" />
+                                                                <button class="btn btn-danger btn-xs js-delete-button">
+                                                                    <i class="fas fa-trash"></i> 
+                                                                    <span class="d-none d-md-inline d-lg-inline">
+                                                                        Desativar
+                                                                    </span>
+                                                                </button>
+                                                            </form>
+                                                            <?php else : ?>
+                                                            <form action="Controller/Ativar.php" method="post">
+                                                                <input type="hidden" name="id" value="<?=$usuario['id']?>" />
+                                                                <button class="btn btn-success btn-xs js-delete-button">
+                                                                    <i class="fas fa-check"></i>
+                                                                    <span class="d-none d-md-inline d-lg-inline">
+                                                                        Ativar
+                                                                    </span>
+                                                                </button>
+                                                            </form>
+                                                        <?php endif ?>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>

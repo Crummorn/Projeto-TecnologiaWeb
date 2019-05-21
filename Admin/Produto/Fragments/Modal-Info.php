@@ -91,43 +91,43 @@
                     </span>
                 </div> 
 
-                <hr>
-
-                <div class="row">
-                    <form action="Controller/EstoqueAumenta.php" method="POST">
-                        <label class="control-label col-md-12" for="quantidade">Aumentar Estoque</label>
-                        <input type="hidden" name="id" value="<?=$produto['id']?>" />
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <span class="col-md-1"></span>
-                                <label class="control-label col-md-4" for="quantidade">Quantidade</label>
-                                <input type="text" class="form-control col-md-4" style="display: inline" name="quantidade" autofocus="autofocus" 
-                                    placeholder="Quantidade">
-                                <button type="submit" class="btn btn-primary float-right">
-                                    <i class="fa fa-save"></i> <span>Adicionar</span>
-                                </button>
+                <?php if (!testaPermissao(13)) : ?>
+                    <hr>
+                    <div class="row">
+                        <form action="Controller/EstoqueAumenta.php" method="POST">
+                            <label class="control-label col-md-12" for="quantidade">Aumentar Estoque</label>
+                            <input type="hidden" name="id" value="<?=$produto['id']?>" />
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span class="col-md-1"></span>
+                                    <label class="control-label col-md-4" for="quantidade">Quantidade</label>
+                                    <input type="text" class="form-control col-md-4" style="display: inline" name="quantidade" autofocus="autofocus" 
+                                        placeholder="Quantidade">
+                                    <button type="submit" class="btn btn-primary float-right">
+                                        <i class="fa fa-save"></i> <span>Adicionar</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="row">
-                    <form action="Controller/EstoqueBaixa.php" method="POST">
-                        <label class="control-label col-md-12" for="quantidade">Dar Baixa No Estoque</label>
-                        <input type="hidden" name="id" value="<?=$produto['id']?>" />
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <span class="col-md-1"></span>
-                                <label class="control-label col-md-4" for="quantidade">Quantidade</label>
-                                <input type="text" class="form-control col-md-4" style="display: inline" name="quantidade" autofocus="autofocus" 
-                                    placeholder="Quantidade">
-                                <button type="submit" class="btn btn-primary float-right">
-                                    <i class="fa fa-save"></i> <span>Baixar</span>
-                                </button>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form action="Controller/EstoqueBaixa.php" method="POST">
+                            <label class="control-label col-md-12" for="quantidade">Dar Baixa No Estoque</label>
+                            <input type="hidden" name="id" value="<?=$produto['id']?>" />
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span class="col-md-1"></span>
+                                    <label class="control-label col-md-4" for="quantidade">Quantidade</label>
+                                    <input type="text" class="form-control col-md-4" style="display: inline" name="quantidade" autofocus="autofocus" 
+                                        placeholder="Quantidade">
+                                    <button type="submit" class="btn btn-primary float-right">
+                                        <i class="fa fa-save"></i> <span>Baixar</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                <?php endif;?>
 
             </div>
             <!-- Modal footer -->

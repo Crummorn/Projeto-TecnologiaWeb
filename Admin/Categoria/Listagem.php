@@ -4,6 +4,15 @@
     require_once ("../Database/LoginController.php"); 
     verificaUsuario();
     
+    $permissoes = $_SESSION["usuarioPermissoes"];
+    
+    if (testaPermissao(1)) {
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Você não tem permissão para executar está ação!';
+        header("Location: ../home/index.php");
+        die();
+    }
+    
     require_once ("../Database/CategoriaController.php");
 
     $titulo = "Painel Administrativo - Categorias"; 
@@ -32,16 +41,18 @@
                             <h1>Listagem de <?=$header?></h1>
                         </div>
 
-                        <div class="col-md-2">
-                            <h1>
-                                <a class="btn btn-success" href="Adiciona-Form.php">
-                                    <i class="fa fa-plus"></i>
-                                    <span class="d-none d-md-inline d-lg-inline">
-                                        Adicionar
-                                    </span>
-                                </a>
-                            </h1>
-                        </div>
+                        <?php if (!testaPermissao(2)) : ?>
+                            <div class="col-md-2">
+                                <h1>
+                                    <a class="btn btn-success" href="Adiciona-Form.php">
+                                        <i class="fa fa-plus"></i>
+                                        <span class="d-none d-md-inline d-lg-inline">
+                                            Adicionar
+                                        </span>
+                                    </a>
+                                </h1>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Card Content -->
@@ -63,7 +74,9 @@
                                             <th class="col-md-6 text-center">
                                                 Nome 
                                             </th>
-                                            <th class="col-md-3 text-center">Ações</th>
+                                            <th class="col-md-3 text-center">
+                                                Ações
+                                            </th>
                                         </tr>
                                     </thead>
 
@@ -79,21 +92,25 @@
                                                 </td>  
 
                                                 <td class="text-center form-inline">
-                                                    <a class="btn btn-primary btn-xs mr-2" href="Altera-Form.php?id=<?=$categoria['id']?>">
-                                                        <i class="fas fa-pencil-alt"></i>    
+                                            <?php if (!testaPermissao(3)) : ?>
+                                                <a class="btn btn-primary btn-xs mr-2" href="Altera-Form.php?id=<?=$categoria['id']?>">
+                                                    <i class="fas fa-pencil-alt"></i>    
+                                                    <span class="d-none d-md-inline d-lg-inline">
+                                                        Alterar 
+                                                    </span>
+                                                </a>
+                                            <?php endif; ?>
+                                            <?php if (!testaPermissao(4)) : ?>
+                                                <form action="Controller/Remover.php" method="post">
+                                                    <input type="hidden" name="id" value="<?=$categoria['id']?>" />
+                                                    <button class="btn btn-danger btn-xs js-delete-button">
+                                                        <i class="fas fa-trash"></i> 
                                                         <span class="d-none d-md-inline d-lg-inline">
-                                                            Alterar 
+                                                            Deletar
                                                         </span>
-                                                    </a>
-                                                    <form action="Controller/Remover.php" method="post">
-                                                        <input type="hidden" name="id" value="<?=$categoria['id']?>" />
-                                                        <button class="btn btn-danger btn-xs js-delete-button">
-                                                            <i class="fas fa-trash"></i> 
-                                                            <span class="d-none d-md-inline d-lg-inline">
-                                                                Deletar
-                                                            </span>
-                                                        </button>
-                                                    </form>
+                                                    </button>
+                                                </form>
+                                            <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>

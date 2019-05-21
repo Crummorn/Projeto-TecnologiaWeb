@@ -1,8 +1,17 @@
-<?php 
+<?php  
     session_start();
     
     require_once ("../Database/LoginController.php"); 
     verificaUsuario();
+    
+    $permissoes = $_SESSION["usuarioPermissoes"];
+    
+    if (testaPermissao(5)) {
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Você não tem permissão para executar está ação!';
+        header("Location: ../home/index.php");
+        die();
+    }
 
     require_once ("../Database/FornecedorController.php"); 
     
@@ -32,6 +41,7 @@
                             <h1>Listagem de <?=$header?></h1>
                         </div>
 
+                    <?php if (!testaPermissao(6)) : ?>
                         <div class="col-md-2">
                             <h1>
                                 <a class="btn btn-success" href="Adiciona-Form.php">
@@ -42,6 +52,7 @@
                                 </a>
                             </h1>
                         </div>
+                    <?php endif; ?>
                     </div>
 
                     <!-- Card Content -->
@@ -90,13 +101,18 @@
                                                                 Info
                                                             </span>
                                                     </button>
+                                                    
+                                                <?php if (!testaPermissao(7)) : ?>
                                                     <a class="btn btn-primary btn-xs mr-2"
-                                                        href="Altera-Form.php?id=<?=$fornecedor['id']?>">
+                                                    href="Altera-Form.php?id=<?=$fornecedor['id']?>">
                                                         <i class="fas fa-pencil-alt"></i>
                                                         <span class="d-none d-md-inline d-lg-inline">
                                                             Alterar
                                                         </span>
                                                     </a>
+                                                <?php endif; ?>
+                                                
+                                                <?php if (!testaPermissao(8)) : ?>
                                                     <form action="Controller/Remover.php" method="post">
                                                         <input type="hidden" name="id" value="<?=$fornecedor['id']?>" />
                                                         <button class="btn btn-danger btn-xs">
@@ -106,6 +122,7 @@
                                                             </span>
                                                         </button>
                                                     </form>
+                                                <?php endif; ?>
                                                 </td>
                                             </tr>
 
