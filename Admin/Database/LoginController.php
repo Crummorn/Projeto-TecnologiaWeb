@@ -51,12 +51,6 @@ function logaUsuario($usuario, $permissoes) {
     $_SESSION["usuario_logado"] = $usuario["nome"];
     $_SESSION["usuarioDados"] = $usuario;
     $_SESSION["usuarioPermissoes"] = $permissoes;
-    $array = " ";
-    foreach ($permissoes as $permissao) :
-        $array = $array . "[permissao= " . $permissao['permissao_id'] . "], ";
-        array_push($_SESSION["usuarioPermissoes"], $permissao);
-    endforeach;
-    $_SESSION['alertMsg'] = 'Logado com sucesso! ' . $array;
 }
 
 function logoutUsuario() {    
@@ -68,7 +62,7 @@ function logoutUsuario() {
 
     session_start();    
     $_SESSION['alertType'] = 'success';
-    $_SESSION['alertMsg'] = 'Logout efetua com sucesso!';
+    $_SESSION['alertMsg'] = 'Logout efetudo com sucesso!';
 
     header("Location: ../../home/login.php");
 }
