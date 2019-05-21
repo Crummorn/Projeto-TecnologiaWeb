@@ -20,7 +20,8 @@ html, body {
 	z-index: 2;
 	color: #fff;
 	background-color: #007bff !important;
-	border-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
 }
 
 .btn-group-xs > .btn, .btn.btn-xs {

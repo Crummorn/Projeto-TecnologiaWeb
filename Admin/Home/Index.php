@@ -43,42 +43,57 @@
                             <div class="container-fluid">       
                                 <!-- Alertas-->
                                 <?php include ("../Fragments/Alertas-Genericos.php"); ?>
-                                
-                                <p>
-                                    <h3>Categorias</h3>
-                                    Total de Categorias: <?=totalCategorias()?>
-                                </p>
-                                <p>
-                                    <h3>Fornecedores</h3>
-                                    Total de Fornecedores: <?=totalFornecedores()?>
-                                </p>
-                                <p> 
-                                    <h3>Produtos</h3>
-                                    Total de Produtos: <?=totalProdutos()?><br>
-                                    Total de Estoque de Produtos: <?=totalEstoqueProdutos()?>
+                                                                
+                                <?php if (!testaPermissao(1)) : ?>
+                                    <p>
+                                        <h3>Categorias</h3>
+                                        Total de Categorias: <?=totalCategorias()?>
+                                    </p>
+                                <?php endif; ?>
 
-                                    <?php foreach($fonecedores as $fornecedor) : ?>
+                                <?php if (!testaPermissao(5)) : ?>
+                                    <p>
+                                        <h3>Fornecedores</h3>
+                                        Total de Fornecedores: <?=totalFornecedores()?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <?php if (!testaPermissao(9)) : ?>
+                                    <p> 
+                                        <h3>Produtos</h3>
+                                        Total de Produtos: <?=totalProdutos()?><br>
+                                        Total de Estoque de Produtos: <?=totalEstoqueProdutos()?>
+                                        <?php if ((!testaPermissao(5)) AND (!testaPermissao(13))) : ?>
+                                            <?php foreach($fonecedores as $fornecedor) : ?>
+                                            <br>
+                                            <br>
+                                            Estoque do fornecedor <?=$fornecedor['nome']?>
+                                            <br>
+                                            Total de Estoque de Produtos: <?=totalEstoqueProdutosFornecedor($fornecedor['id'])?>
+                                            <br>
+                                            Lucro Esperado: <?=possivelLucroDeUmFornecedor($fornecedor['id'])?>
+                                            <?php endforeach ?>
+                                        <?php endif; ?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <?php if (!testaPermissao(14)) : ?>
+                                    <p> 
+                                        <h3>Status Pedido</h3>
+                                        Total de Status_Pedido: <?=totalStatuss()?><br>
+                                    </p>
+                                <?php endif; ?>
+
+                                <?php if (!testaPermissao(19)) : ?>
+                                    <p> 
+                                        <h3>Usuarios</h3>
+                                        Total de Usuarios Cadastrados: <?=totalUsuarios()?>
                                         <br>
+                                        Total de Usuarios Ativos: <?=totalUsuariosAtivos()?>
                                         <br>
-                                        Estoque do fornecedor <?=$fornecedor['nome']?>
-                                        <br>
-                                        Total de Estoque de Produtos: <?=totalEstoqueProdutosFornecedor($fornecedor['id'])?>
-                                        <br>
-                                        Lucro Esperado: <?=possivelLucroDeUmFornecedor($fornecedor['id'])?>
-                                    <?php endforeach ?>
-                                </p>
-                                <p> 
-                                    <h3>Status Pedido</h3>
-                                    Total de Status_Pedido: <?=totalStatuss()?><br>
-                                </p>
-                                <p> 
-                                    <h3>Usuarios</h3>
-                                    Total de Usuarios Cadastrados: <?=totalUsuarios()?>
-                                    <br>
-                                    Total de Usuarios Ativos: <?=totalUsuariosAtivos()?>
-                                    <br>
-                                    Total de Usuarios Desativados: <?=totalUsuariosDesativados()?>
-                                </p>
+                                        Total de Usuarios Desativados: <?=totalUsuariosDesativados()?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

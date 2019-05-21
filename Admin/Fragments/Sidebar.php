@@ -2,8 +2,8 @@
     
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Painel Administrativo </div>
-        <div class="list-group list-group-flush mt-4">
+        <div class="sidebar-heading pt-4 pb-4 pl-3">Painel Administrativo </div>
+        <div class="list-group list-group-flush ">
             <a href="../Home/Index.php" 
                 class="list-group-item list-group-item-action bg-light 
                 <?php linkSidebarAtivo($paginaAtual, 'Home') ?>">
