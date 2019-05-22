@@ -54,6 +54,11 @@ INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_USUARIOS',
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ATIVAR_DESATIVAR_USUARIOS', 'O usuario pode ativar ou desativar usuarios existentes.');
 INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_PERMISSOES_USUARIOS', 'O usuario pode alterar permissoes de usuarios existentes.');
 
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('LISTAR_PEDIDOS', 'O usuario pode listar pedido.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ADICIONAR_PEDIDOS', 'O usuario pode adicionar pedidos.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ALTERAR_STATUS_PEDIDOS', 'O usuario pode alterar status dos pedidos.');
+INSERT INTO `loja`.`permissao` (`nome`, `descricao`) VALUES ('ATIVAR_DESATIVAR_PEDIDOS', 'O usuario pode ativar ou desativar pedidos existentes.');
+
 -- Senha: admin
 INSERT INTO `loja`.`usuario` (`email`, `senha`, `nome`) VALUES ('admin@loja.com', '21232f297a57a5a743894a0e4a801fc3', 'Loja Admin');
 -- Adicionou todas as permissões ao usuario admin
@@ -81,6 +86,10 @@ INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '21');
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '22');
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '23');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '24');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '25');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '26');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('1', '27');
 
 -- Senha: listar
 INSERT INTO `loja`.`usuario` (`email`, `senha`, `nome`) VALUES ('listar@loja.com', 'c1cd37dd21d421796ebbb9eb8b361813', 'Loja Lists');
@@ -90,3 +99,4 @@ INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('2
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('2', '7');
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('2', '11');
 INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('2', '14');
+INSERT INTO `loja`.`usuario_permissao` (`usuario_id`, `permissao_id`) VALUES ('2', '24');

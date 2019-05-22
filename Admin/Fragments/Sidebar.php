@@ -40,6 +40,14 @@
                 <?php linkSidebarAtivo($paginaAtual, 'Produto') ?>">
                 Produtos
             </a>
+        </div>
+        
+        <div class="list-group list-group-flush mt-4">
+            <a href="../Pedido/Listagem.php" 
+                class="list-group-item list-group-item-action bg-light
+                <?php linkSidebarAtivo($paginaAtual, 'Pedido') ?>">
+                Pedido
+            </a>
             <a href="../Status/Listagem.php" 
                 class="list-group-item list-group-item-action bg-light
                 <?php linkSidebarAtivo($paginaAtual, 'Status') ?>">

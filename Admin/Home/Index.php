@@ -9,6 +9,7 @@
     require_once ("../Database/ProdutoController.php"); 
     require_once ("../Database/StatusController.php"); 
     require_once ("../Database/UsuarioController.php"); 
+    require_once ("../Database/PedidoController.php"); 
 
     $fonecedores = listaFornecedores();
 
@@ -92,6 +93,17 @@
                                         Total de Usuarios Ativos: <?=totalUsuariosAtivos()?>
                                         <br>
                                         Total de Usuarios Desativados: <?=totalUsuariosDesativados()?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <?php if (!testaPermissao(24)) : ?>
+                                    <p> 
+                                        <h3>Pedidos</h3>
+                                        Total de Pedidos Existentes: <?=totalPedidos()?>
+                                        <br>
+                                        Total de Pedidos Ativos: <?=totalPedidosAtivos()?>
+                                        <br>
+                                        Total de Pedidos Desativados: <?=totalPedidosDesativados()?>
                                     </p>
                                 <?php endif; ?>
                             </div>

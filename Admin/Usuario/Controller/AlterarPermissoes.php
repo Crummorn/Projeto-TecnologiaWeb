@@ -19,7 +19,7 @@
     $usuario = buscarUsuario($id);
 
     $permissoes = array();
-    for ($i = 1; $i <= 18; $i++) :
+    for ($i = 1; $i <= 27; $i++) :
         if(isset($_POST["checkPermissao".$i])) :
             array_push($permissoes, $i);
         endif;

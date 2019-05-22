@@ -26,7 +26,7 @@
     require_once ("../Fragments/Funcoes-Basicas.php"); 
     require_once ("../Fragments/Head.php");  
     require_once ("../Fragments/Navbar.php");  
-    require_once ("../Fragments/Sidebar.php"); 
+    require_once ("../Fragments/Sidebar.php");  
 ?>
 
 <!-- Content -->

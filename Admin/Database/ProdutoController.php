@@ -77,6 +77,20 @@ function darBaixaNoEstoque($id, $quantidade) {
     }
 }
 
+function testaEstoqueMenorIgual($id, $quantidade) {
+    $produto = buscaProduto($id);
+
+    if ($produto['estoque'] >= $quantidade) {
+        return TRUE;
+    } else {
+        $produto = buscaProduto($id);     
+        $_SESSION['alertType'] = 'danger';
+        $_SESSION['alertMsg'] = 'Produto ' . $produto['nome'] . ' não tem estoque suficiente!';
+        header("Location: ../Listagem.php");    
+        die();
+    }
+}
+
 /*
  * Funções de Utilidade
  */
