@@ -8,7 +8,7 @@ function insereFornecedor($cnpj, $nome, $endereco, $contato) {
 
     if (count($listaErros) > 0) {        
         adicionaFornecedorSession($cnpj, $nome, $endereco, $contato, $listaErros);
-        header("Location: ../adiciona-form.php");  
+        header("Location: ../Adiciona-Form.php");  
         die(); 
     }
 
@@ -20,7 +20,7 @@ function alteraFornecedor($id, $cnpj, $nome, $endereco, $contato) {
 
     if (count($listaErros) > 0) {       
         adicionaFornecedorSession($cnpj, $nome, $endereco, $contato, $listaErros);
-        header("Location: ../altera-form.php?id=".$id);  
+        header("Location: ../Altera-Form.php?id=".$id);  
         die(); 
     }
 
@@ -34,7 +34,7 @@ function removeFornecedor($id) {
         $fornecedor = buscaFornecedor($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Fornecedor ' . $fornecedor['nome'] . ' não pode ser removido, está sendo utilizada!';
-        header("Location: ../listagem.php");    
+        header("Location: ../Listagem.php");    
         die();
     }
 }

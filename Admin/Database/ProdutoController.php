@@ -8,7 +8,7 @@ function insereProduto($nome, $valor, $descricao, $peso, $estoque, $custo, $cate
 
     if (count($listaErros) > 0) {
         adicionaValoresProdutoSession($nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id, $listaErros);
-        header("Location: ../adiciona-form.php");  
+        header("Location: ../Adiciona-Form.php");  
         die(); 
     }
 
@@ -20,7 +20,7 @@ function alteraProduto($id, $nome, $valor, $descricao, $peso, $estoque, $custo, 
 
     if (count($listaErros) > 0) {
         adicionaValoresProdutoSession($nome, $valor, $descricao, $peso, $estoque, $custo, $categoria_id, $fornecedor_id, $listaErros);
-        header("Location: ../altera-form.php?id=".$id);
+        header("Location: ../Altera-Form.php?id=".$id);
         die(); 
     }
 
@@ -72,7 +72,7 @@ function darBaixaNoEstoque($id, $quantidade) {
         $produto = buscaProduto($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Produto ' . $produto['nome'] . ' não tem estoque suficiente!';
-        header("Location: ../listagem.php");    
+        header("Location: ../Listagem.php");    
         die();
     }
 }

@@ -9,7 +9,7 @@ function insereStatus($nome, $descricao) {
 
     if (count($listaErros) > 0) {        
         adicionaStatusSession($nome, $descricao, $listaErros);
-        header("Location: ../adiciona-form.php");  
+        header("Location: ../Adiciona-Form.php");  
         die(); 
     }
 
@@ -21,7 +21,7 @@ function alteraStatus($id, $nome, $descricao) {
 
     if (count($listaErros) > 0) {        
         adicionaStatusSession($nome, $descricao, $listaErros);
-        header("Location: ../altera-form.php?id=".$id);
+        header("Location: ../Altera-Form.php?id=".$id);
         die(); 
     }
 
@@ -35,7 +35,7 @@ function removeStatus($id) {
         $status = buscaStatus($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Status ' . $status['nome'] . ' não pode ser removido, está sendo utilizada!';
-        header("Location: ../listagem.php");    
+        header("Location: ../Listagem.php");    
         die();
     }
 }

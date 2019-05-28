@@ -21,7 +21,7 @@ function alteraCategoria($id, $nome) {
 
     if (count($listaErros) > 0) {
         adicionaCategoriaSession($nome, $listaErros);
-        header("Location: ../altera-form.php?id=".$id);  
+        header("Location: ../Altera-Form.php?id=".$id);  
         die(); 
     }
     
@@ -35,7 +35,7 @@ function removeCategoria($id) {
         $categoria = buscaCategoria($id);     
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Categoria ' . $categoria['nome'] . ' não pode ser removida, está sendo utilizada!';
-        header("Location: ../listagem.php");    
+        header("Location: ../Listagem.php");    
         die();
     }
 }

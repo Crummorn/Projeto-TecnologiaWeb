@@ -9,7 +9,7 @@
     if (testaPermissao(5)) {
         $_SESSION['alertType'] = 'danger';
         $_SESSION['alertMsg'] = 'Você não tem permissão para executar está ação!';
-        header("Location: ../home/index.php");
+        header("Location: ../Home/Index.php");
         die();
     }
 

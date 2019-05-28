@@ -64,5 +64,5 @@ function logoutUsuario() {
     $_SESSION['alertType'] = 'success';
     $_SESSION['alertMsg'] = 'Logout efetudo com sucesso!';
 
-    header("Location: ../../home/login.php");
+    header("Location: ../../Home/Login.php");
 }

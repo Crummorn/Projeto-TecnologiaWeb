@@ -9,7 +9,7 @@ function inserePedido($endereco, $frete, $produtos) {
 
     if (count($listaErros) > 0) {
         adicionaPedidoSession($endereco, $listaErros);
-        header("Location: ../adiciona-form.php");    
+        header("Location: ../Adiciona-Form.php");    
         die(); 
     }
     
