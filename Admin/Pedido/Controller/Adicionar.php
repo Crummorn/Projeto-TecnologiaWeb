@@ -20,7 +20,7 @@
 
     $produtos = array();
     $array = " ";
-    for ($i = 1; $i <= 18; $i++) :
+    for ($i = 1; $i <= $quantidadeProdutos; $i++) :
         if(isset($_POST["checkProduto".$i])) :
             $produto['id'] = $_POST["checkProduto".$i];
             $produto['quantidade'] = $_POST["quantidadeProduto".$i];
@@ -34,9 +34,4 @@
         $_SESSION['alertMsg'] = 'Produto adicionada com sucesso!';
         header("Location: ../Listagem.php");    
         die();
-    } else {
-        $_SESSION['alertType'] = 'success';
-        $_SESSION['alertMsg'] = 'pokpokpokpokpokpokopk!';
-        header("Location: ../Listagem.php");    
-        die();
-    }
+    } 

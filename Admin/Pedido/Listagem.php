@@ -69,7 +69,7 @@
                                     <thead>
                                         <tr>
                                             <th class="col-md-2 text-center">
-                                                Codigo 
+                                                Protocolo 
                                             </th>
                                             <th class="col-md-6 text-center">
                                                 Status 

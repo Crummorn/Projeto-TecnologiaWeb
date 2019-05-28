@@ -18,7 +18,7 @@
     $titulo = "Painel Administrativo - Pedidos"; 
     $paginaAtual = "Pedido";  
     $header = "Pedidos";
-
+    
     $produtos = listaProdutos();
     $pedido = array();
 
@@ -28,6 +28,8 @@
     } else {
         $pedido['endereco'] = '';
     }
+
+    $quantidadeProdutos = 0;
 
     require_once ("../Fragments/Funcoes-Basicas.php"); 
     require_once ("../Fragments/Head.php");  
@@ -73,19 +75,38 @@
                                         <h2>Selecione os Produtos:</h2>
                                     </span>
 
-                                    <div class="form-group">
+                                    <div class="container">
+                                        <div class="form-inline">
+                                            <div class="form-group col-4 my-2">
+                                                <span class="text-uppercase form-text"><strong>Produto</strong></span>
+                                            </div>
+                                            <div class="form-group col-4 my-2">
+                                                <span class="text-uppercase form-text"><strong>Total Em Estoque</strong></span>
+                                            </div>
+                                            <div class="form-group col-4 my-2">
+                                                <span class="text-uppercase form-text"><strong>Quantidade</strong></span>
+                                            </div>
+                                        </div>
+
                                         <?php foreach($produtos as $produto) : ?>
-                                            <div class="form-inline mt-4">
-                                                <div class="form-check form-check-inline mb-2">
+                                            <?php $quantidadeProdutos++;?>
+                                            <div class="form-inline border-top">
+                                                <div class="form-group col-4 my-4">
                                                     <input class="form-check-input" type="checkbox" name="checkProduto<?=$produto['id']?>" value="<?=$produto['id']?>" >
                                                     <label class="form-check-label" for="<?=$produto['nome']?>"><?=$produto['nome']?></label>
                                                 </div>
-                                                <input class="form-control" type="number" name="quantidadeProduto<?=$produto['id']?>" placeholder="Informe a Quantidade">
-                                                <br>
+
+                                                <div class="form-group col-4 my-4">
+                                                    <label for="<?=$produto['estoque']?>" class="control-label"><?=$produto['estoque']?></label>
+                                                </div>
+
+                                                <div class="form-group col-4">
+                                                    <input class="form-control" type="number" name="quantidadeProduto<?=$produto['id']?>" placeholder="Informe a Quantidade">
+                                                </div>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
-
+                                
                                     <div class="form-group row">
                                         <div class="col-md-12 ">
                                             <p class="form-control-plaintext text-danger">* Campos Obrigatórios</p>
