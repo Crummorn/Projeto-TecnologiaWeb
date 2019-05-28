@@ -5,7 +5,7 @@ class DataSource {
 	private static $host = "localhost";
 	private static $username = "root";
 	private static $password = "";
-	private static $dbName = "loja";
+	private static $dbName = "tecweb_loja";
 
 	public static function getConexao() {
 		if(!isset(self::$instance)):
